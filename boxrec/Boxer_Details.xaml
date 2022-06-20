@@ -1,0 +1,17 @@
+﻿<Window x:Class="boxrec.Boxer_Details"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:boxrec"
+        mc:Ignorable="d"
+        Title="Boxer_Details" Height="450" Width="800">
+    <Grid>
+        <TextBox HorizontalAlignment="Left" x:Name="name" Margin="10,44,0,0" TextWrapping="Wrap" Text="{Binding name}" VerticalAlignment="Top" Width="237"/>
+        <TextBox HorizontalAlignment="Left" x:Name="name_Copy" Margin="10,78,0,0" TextWrapping="Wrap" Text="{Binding surname}" VerticalAlignment="Top" Width="237"/>
+        <TextBox HorizontalAlignment="Left" x:Name="name_Copy1" Margin="10,114,0,0" TextWrapping="Wrap" Text="{Binding division}" VerticalAlignment="Top" Width="237"/>
+        <TextBox HorizontalAlignment="Left" x:Name="name_Copy2" Margin="10,151,0,0" TextWrapping="Wrap" Text="{Binding dateofbirth}" VerticalAlignment="Top" Width="237"/>
+        <Image Margin="380,23,267,251" Source="https://www.frankwarren.com/wp-content/uploads/2020/09/Tyson-Fury.png"/>
+
+    </Grid>
+</Window>
