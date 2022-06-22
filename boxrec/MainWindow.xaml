@@ -27,14 +27,21 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Edit"></MenuItem>
+                    <MenuItem Header="Delete"></MenuItem>
+                    <MenuItem Header="ShowDetails"></MenuItem>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
         </DataGrid>
         <TextBox TextWrapping="Wrap" Text="Name" x:Name="name" Margin="10,10,564,364" TextChanged="Name_TextChanged" Grid.ColumnSpan="2"/>
         <TextBox TextWrapping="Wrap" Text="Second Name" x:Name="surname" Margin="10,75,564,299" TextChanged="SecondName_TextChanged" Grid.ColumnSpan="2"/>
         <TextBox TextWrapping="Wrap" Text="Date of birth" x:Name="dateofbirth" Margin="10,140,564,234" TextChanged="dateofbirth_TextChanged" Grid.ColumnSpan="2"/>
         <TextBox TextWrapping="Wrap" Text="Division" x:Name="kategoriawagowa" Margin="246,10,328,364" TextChanged="kategoriawagowa_TextChanged" Grid.ColumnSpan="2" />
         <Button Content="Add boxer" HorizontalAlignment="Left" Margin="584,15,0,0" VerticalAlignment="Top" Width="172" Height="40" Click="Button_Click" Grid.ColumnSpan="2"/>
-        <Button Content="Remove boxer(ID)" HorizontalAlignment="Left" Margin="584,75,0,0" VerticalAlignment="Top" Width="172" Height="40" Click="Button_Click_1" Grid.ColumnSpan="2"/>
-        <Button Content="Edit boxer(ID)" HorizontalAlignment="Left" Margin="584,140,0,0" VerticalAlignment="Top" Width="172" Height="40" Click="Button_Click_2" Grid.ColumnSpan="2"/>
+        <Button Content="Remove boxer (ID)" HorizontalAlignment="Left" Margin="584,75,0,0" VerticalAlignment="Top" Width="172" Height="40" Click="Button_Click_1" Grid.ColumnSpan="2"/>
+        <Button Content="Edit boxer (ID)" HorizontalAlignment="Left" Margin="584,140,0,0" VerticalAlignment="Top" Width="172" Height="40" Click="Button_Click_2" Grid.ColumnSpan="2"/>
         <TextBox TextWrapping="Wrap" x:Name="ID" Text="ID" Margin="486,10,233,364" Grid.ColumnSpan="2"/>
 
     </Grid>

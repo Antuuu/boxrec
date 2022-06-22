@@ -5,13 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:boxrec"
         mc:Ignorable="d"
-        Title="Boxer_Details" Height="450" Width="800">
+        Title="Boxer details" Height="450" Width="800">
     <Grid>
-        <TextBox HorizontalAlignment="Left" x:Name="name" Margin="10,44,0,0" TextWrapping="Wrap" Text="{Binding name}" VerticalAlignment="Top" Width="237"/>
-        <TextBox HorizontalAlignment="Left" x:Name="name_Copy" Margin="10,78,0,0" TextWrapping="Wrap" Text="{Binding surname}" VerticalAlignment="Top" Width="237"/>
+        <Label Content="Date of birth:" HorizontalAlignment="Left" Margin="10,130,0,0"/>
+        <Label Content="Division:" HorizontalAlignment="Left" Margin="10,93,0,0"/>
+        <Label Content="Surname:" HorizontalAlignment="Left" Margin="10,56,0,0"/>
+        <Label Content="Name:" HorizontalAlignment="Left" Margin="10,19,0,0"/>
+        <TextBox HorizontalAlignment="Left" x:Name="name" Margin="10,40,0,0" TextWrapping="Wrap" Text="{Binding name}" VerticalAlignment="Top" Width="237"/>
+        <TextBox HorizontalAlignment="Left" x:Name="name_Copy" Margin="10,77,0,0" TextWrapping="Wrap" Text="{Binding surname}" VerticalAlignment="Top" Width="237"/>
         <TextBox HorizontalAlignment="Left" x:Name="name_Copy1" Margin="10,114,0,0" TextWrapping="Wrap" Text="{Binding division}" VerticalAlignment="Top" Width="237"/>
         <TextBox HorizontalAlignment="Left" x:Name="name_Copy2" Margin="10,151,0,0" TextWrapping="Wrap" Text="{Binding dateofbirth}" VerticalAlignment="Top" Width="237"/>
         <Image Margin="380,23,267,251" Source="https://www.frankwarren.com/wp-content/uploads/2020/09/Tyson-Fury.png"/>
-
+        <DataGrid Margin="0 200 0 0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="No."></DataGridTextColumn>
+                <DataGridTextColumn Header="Opponent" Width="250"></DataGridTextColumn>
+                <DataGridTextColumn Header="Date" Width="100"></DataGridTextColumn>
+                <DataGridTextColumn Header="Won by" Width="*"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="History of fights:" HorizontalAlignment="Left" Margin="10,174,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.546,-0.028" Height="26"/>
     </Grid>
 </Window>
