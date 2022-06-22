@@ -29,7 +29,6 @@ namespace boxrec
             string[] currentView = new string[] { "Boxers", "Clubs" };
             InitializeComponent();
             data_grid.ItemsSource = FetchBoxers();
-            
         }
 
         // TODO
@@ -84,19 +83,26 @@ namespace boxrec
 
         private void Remove_Boxer_Button_Click(object sender, RoutedEventArgs e)
         {
-            //string connectionString = @"Data Source=localhost;Initial Catalog=boxrec;Integrated Security=True";
-            //using (BoxrecContext db = new BoxrecContext(connectionString))
-            //{
-            //    int idToRemove = int.Parse(ID.Text);
-            //    Boxer BoxerToDelete = db.Boxers.First(c => c.ID == idToRemove);
-            //    db.Boxers.Remove(BoxerToDelete);
-            //    db.SaveChanges();
-            //    data_grid.ItemsSource = FetchBoxers();
-            //}
+
         }
 
         private void Edit_Boxer_Button_Click(object sender, RoutedEventArgs e)
         {
+            string connectionString = @"Data Source=localhost;Initial Catalog=boxrec;Integrated Security=True";
+            using (BoxrecContext db = new BoxrecContext(connectionString))
+            {
+                Boxer b = (Boxer)data_grid.SelectedItem;
+                EditBoxer editBoxer = new EditBoxer();
+                editBoxer.DataContext = b;
+                editBoxer.ID_TextBox.Text = b.ID.ToString();
+                editBoxer.Name_TextBox.Text = b.name.ToString();
+                editBoxer.Surname_TextBox.Text = b.surname.ToString();
+                editBoxer.Division_TextBox.Text = b.division.ToString();
+                editBoxer.Date_of_birth_TextBox.Text = b.dateofbirth.ToString();
+
+                editBoxer.ShowDialog();
+
+            }
 
         }
 

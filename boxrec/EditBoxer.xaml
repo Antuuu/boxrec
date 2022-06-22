@@ -1,0 +1,27 @@
+﻿<Window x:Class="boxrec.EditBoxer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:boxrec"
+        mc:Ignorable="d"
+        Title="EditBoxer" Height="430" Width="320">
+    <StackPanel>
+        <Label Content="ID:"></Label>
+        <TextBox x:Name="ID_TextBox" Margin="5 5 200 5" IsEnabled="False"></TextBox>
+        <Label Content="Name:"></Label>
+        <TextBox x:Name="Name_TextBox" Margin="5 5 5 5"></TextBox>
+        <Label Content="Surname:"></Label>
+        <TextBox x:Name="Surname_TextBox" Margin="5 5 5 5"></TextBox>
+        <Label Content="Division:"></Label>
+        <TextBox x:Name="Division_TextBox" Margin="5 5 5 5"></TextBox>
+        <Label Content="Date of birth:"></Label>
+        <TextBox x:Name="Date_of_birth_TextBox" Margin="5 5 5 5"></TextBox>
+        <Label Content="Image URL:"></Label>
+        <TextBox x:Name="Image_URL_TextBox" Margin="5 5 5 5"></TextBox>
+        <Grid>
+            <Button Click="Save_Button_Click" HorizontalAlignment="Left" Width="120" x:Name="Save_Button" Content="Save" Margin="10 10 150 150"></Button>
+            <Button Click="Cancel_Button_Click" HorizontalAlignment="Right" Width="120" x:Name="Cancel_Button" Content="Cancel" Margin="150 10 10 150"></Button>
+        </Grid>
+    </StackPanel>
+</Window>
