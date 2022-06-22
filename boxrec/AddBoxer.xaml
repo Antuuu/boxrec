@@ -1,14 +1,12 @@
-﻿<Window x:Class="boxrec.EditBoxer"
+﻿<Window x:Class="boxrec.AddBoxer"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:boxrec"
         mc:Ignorable="d"
-        Title="Edit boxer" Height="430" Width="320">
+        Title="Add boxer" Height="390" Width="320">
     <StackPanel>
-        <Label Content="ID:"></Label>
-        <TextBox x:Name="ID_TextBox" Margin="5 5 200 5" IsEnabled="False"></TextBox>
         <Label Content="Name:"></Label>
         <TextBox x:Name="Name_TextBox" Margin="5 5 5 5"></TextBox>
         <Label Content="Surname:"></Label>

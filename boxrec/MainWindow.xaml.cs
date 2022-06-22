@@ -27,14 +27,12 @@ namespace boxrec
         public static string connectionString = @"Data Source=localhost;Initial Catalog=boxrec;Integrated Security=True";
 
         // TODO
-        // okienko dodawania zawodnikow do bazy
-        // w okienku editu: dodanie obsługi zdarzenia save dla optymalizacji? i obsługa inputu w edicie
-        // usuwanie zawodników z bazy
-        // rightclick na datagridzie
-        // okienko show details, w tym:
-        // // datagrid z walkami
-        // // okienko edycji i dodawania walk
         // tabele w SQL? - walki, dywizje
+        // obsługa inputów w add & edit
+        // dodanie obsługi zdarzeń save w add&edit dla optymalizacji? 
+        // okienko show details, w tym datagrid z walkami, dodawanie/edycja walk, wyswietlanie tytułów
+        // rightclicki na datagridzie
+
 
         public MainWindow()
         {
@@ -78,12 +76,24 @@ namespace boxrec
 
         private void Add_Boxer_Button_Click(object sender, RoutedEventArgs e)
         {
-
+            AddBoxer addBoxer = new AddBoxer();
+            addBoxer.ShowDialog();
+            Boxers_DataGrid.ItemsSource = FetchBoxers();
         }
 
         private void Remove_Boxer_Button_Click(object sender, RoutedEventArgs e)
         {
+            using (BoxrecContext db = new BoxrecContext(connectionString))
+            {
+                if (Boxers_DataGrid.SelectedItem != null)
+                {
 
+                    Boxer boxerToRemove = (Boxer)Boxers_DataGrid.SelectedItem;
+                    db.Boxers.Remove(boxerToRemove);
+                    db.SaveChanges();
+                }
+                Boxers_DataGrid.ItemsSource = FetchBoxers();
+            }
         }
 
         private void Edit_Boxer_Button_Click(object sender, RoutedEventArgs e)

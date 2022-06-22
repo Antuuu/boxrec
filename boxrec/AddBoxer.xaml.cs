@@ -15,29 +15,29 @@ using System.Windows.Shapes;
 namespace boxrec
 {
     /// <summary>
-    /// Interaction logic for EditBoxer.xaml
+    /// Interaction logic for AddBoxer.xaml
     /// </summary>
-    public partial class EditBoxer : Window
+    public partial class AddBoxer : Window
     {
-        public EditBoxer()
+        public AddBoxer()
         {
             InitializeComponent();
         }
 
-
         private void Save_Button_Click(object sender, RoutedEventArgs e)
-        { 
+        {
             using (BoxrecContext db = new BoxrecContext(MainWindow.connectionString))
             {
-                int idToEdit = Int32.Parse(ID_TextBox.Text);
-                Boxer boxerToEdit = db.Boxers
-                    .Where(x => x.ID == idToEdit)
-                    .First();
-                boxerToEdit.Name = Name_TextBox.Text;
-                boxerToEdit.Surname = Surname_TextBox.Text;
-                boxerToEdit.Division = Int32.Parse(Division_TextBox.Text);
-                boxerToEdit.DateOfBirth = DateTime.Parse(DateOfBirth_TextBox.Text);
-                db.SaveChanges();
+                Boxer boxerToAdd = new Boxer 
+                { 
+                    Name = Name_TextBox.Text, 
+                    Surname = Surname_TextBox.Text, 
+                    Division = Int32.Parse(Division_TextBox.Text), 
+                    DateOfBirth = DateTime.Parse(DateOfBirth_TextBox.Text) 
+                };
+
+                    db.Boxers.Add(boxerToAdd);
+                    db.SaveChanges();
             }
 
             Close();
@@ -47,5 +47,6 @@ namespace boxrec
         {
             Close();
         }
+
     }
 }
