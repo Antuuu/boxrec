@@ -16,14 +16,14 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <DataGrid x:Name="data_grid" Grid.ColumnSpan="4" Grid.Row="1"  AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="data_grid_SelectionChanged">
+        <DataGrid x:Name="Boxers_DataGrid" Grid.ColumnSpan="4" Grid.Row="1"  AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="Boxers_DataGrid_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding ID}" Header="ID" Width="50" />
-                <DataGridTextColumn Binding="{Binding name}" Header="name" Width="100" />
-                <DataGridTextColumn Binding="{Binding surname}" Header="surname" Width="100" />
-                <DataGridTextColumn Binding="{Binding division}" Header="division" Width="100" />
-                <DataGridTextColumn Binding="{Binding dateofbirth}" Header="date of birth" Width="200" />
-                <DataGridTextColumn Binding="{Binding record}" Header="record" Width="*" />
+                <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="100" />
+                <DataGridTextColumn Binding="{Binding Surname}" Header="Surname" Width="100" />
+                <DataGridTextColumn Binding="{Binding Division}" Header="Division" Width="100" />
+                <DataGridTextColumn Binding="{Binding DateOfBirth}" Header="Date of birth" Width="200" />
+                <DataGridTextColumn Binding="{Binding Record}" Header="Record" Width="*" />
             </DataGrid.Columns>
             <DataGrid.ContextMenu>
                 <ContextMenu>

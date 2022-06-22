@@ -9,11 +9,11 @@ namespace boxrec
     public class Boxer
     {
         public int ID { get; set; }
-        public string name { get; set; }
-        public string surname { get; set; }
-        public DateTime dateofbirth { get; set; }
-        public int division { get; set; }
-        public string record { get => GetRecord(); }
+        public string? Name { get; set; }
+        public string? Surname { get; set; }
+        public DateTime DateOfBirth { get; set; }
+        public int Division { get; set; }
+        public string Record { get => GetRecord(); }
 
         public string GetRecord()
         {

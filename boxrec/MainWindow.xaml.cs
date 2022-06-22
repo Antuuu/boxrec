@@ -24,20 +24,27 @@ namespace boxrec
     /// 
     public partial class MainWindow : Window
     {
-        public MainWindow()
-        {
-            string[] currentView = new string[] { "Boxers", "Clubs" };
-            InitializeComponent();
-            data_grid.ItemsSource = FetchBoxers();
-        }
+        public static string connectionString = @"Data Source=localhost;Initial Catalog=boxrec;Integrated Security=True";
 
         // TODO
-        // okienko dodawania boxerów
-        // 
+        // okienko dodawania zawodnikow do bazy
+        // w okienku editu: dodanie obsługi zdarzenia save dla optymalizacji? i obsługa inputu w edicie
+        // usuwanie zawodników z bazy
+        // rightclick na datagridzie
+        // okienko show details, w tym:
+        // // datagrid z walkami
+        // // okienko edycji i dodawania walk
+        // tabele w SQL? - walki, dywizje
+
+        public MainWindow()
+        {
+            InitializeComponent();
+            Boxers_DataGrid.ItemsSource = FetchBoxers();
+        }
+
 
         public static List<Boxer> FetchBoxers()
         {
-            string connectionString = @"Data Source=localhost;Initial Catalog=boxrec;Integrated Security=True";
             using (BoxrecContext db = new BoxrecContext(connectionString))
             {
                 List<Boxer> boxers = new List<Boxer>();
@@ -49,7 +56,6 @@ namespace boxrec
         private void ChangeText(object sender, RoutedEventArgs e)
         {
             int id = (int)((Button)sender).CommandParameter;
-            string connectionString = @"Data Source=localhost;Initial Catalog=boxrec;Integrated Security=True";
             using (BoxrecContext db = new BoxrecContext(connectionString))
             {
                 Boxer boxer = db.Boxers.First(c => c.ID == id);
@@ -72,13 +78,7 @@ namespace boxrec
 
         private void Add_Boxer_Button_Click(object sender, RoutedEventArgs e)
         {
-            //string connectionString = @"Data Source=localhost;Initial Catalog=boxrec;Integrated Security=True";
-            //using (BoxrecContext db = new BoxrecContext(connectionString))
-            //{
-            //    db.Boxers.Add(new Boxer { dateofbirth = DateTime.Parse(dateofbirth.Text), name = name.Text , division = int.Parse(kategoriawagowa.Text),  surname = surname.Text});
-            //    db.SaveChanges();
-            //    data_grid.ItemsSource = FetchBoxers();
-            //}
+
         }
 
         private void Remove_Boxer_Button_Click(object sender, RoutedEventArgs e)
@@ -88,37 +88,35 @@ namespace boxrec
 
         private void Edit_Boxer_Button_Click(object sender, RoutedEventArgs e)
         {
-            string connectionString = @"Data Source=localhost;Initial Catalog=boxrec;Integrated Security=True";
             using (BoxrecContext db = new BoxrecContext(connectionString))
             {
-                Boxer b = (Boxer)data_grid.SelectedItem;
-                EditBoxer editBoxer = new EditBoxer();
-                editBoxer.DataContext = b;
-                editBoxer.ID_TextBox.Text = b.ID.ToString();
-                editBoxer.Name_TextBox.Text = b.name.ToString();
-                editBoxer.Surname_TextBox.Text = b.surname.ToString();
-                editBoxer.Division_TextBox.Text = b.division.ToString();
-                editBoxer.Date_of_birth_TextBox.Text = b.dateofbirth.ToString();
+                if (Boxers_DataGrid.SelectedItem != null)
+                {
 
-                editBoxer.ShowDialog();
+                    Boxer boxerToEdit = (Boxer)Boxers_DataGrid.SelectedItem;
+                    EditBoxer editBoxer = new EditBoxer();
 
+                    editBoxer.DataContext = boxerToEdit;
+
+                    editBoxer.ID_TextBox.Text = boxerToEdit.ID.ToString();
+                    editBoxer.Name_TextBox.Text = boxerToEdit.Name;
+                    editBoxer.Surname_TextBox.Text = boxerToEdit.Surname;
+                    editBoxer.Division_TextBox.Text = boxerToEdit.Division.ToString();
+                    editBoxer.DateOfBirth_TextBox.Text = boxerToEdit.DateOfBirth.ToString();
+
+                    editBoxer.ShowDialog();
+                }
             }
 
+            Boxers_DataGrid.ItemsSource = FetchBoxers();
+
         }
 
-        private void dateofbirth_TextChanged(object sender, TextChangedEventArgs e)
+
+        private void Boxers_DataGrid_SelectionChanged(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void kategoriawagowa_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void data_grid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
     }
 }

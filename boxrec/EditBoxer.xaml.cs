@@ -24,15 +24,30 @@ namespace boxrec
             InitializeComponent();
         }
 
-        private void Save_Button_Click(object sender, RoutedEventArgs e)
-        {
+        public delegate void DataSavedEventHandler(object sender, EventArgs e);
 
+
+        private void Save_Button_Click(object sender, RoutedEventArgs e)
+        { 
+            using (BoxrecContext db = new BoxrecContext(MainWindow.connectionString))
+            {
+                int idToEdit = Int32.Parse(ID_TextBox.Text);
+                Boxer boxerToEdit = db.Boxers
+                    .Where(x => x.ID == idToEdit)
+                    .First();
+                boxerToEdit.Name = Name_TextBox.Text;
+                boxerToEdit.Surname = Surname_TextBox.Text;
+                boxerToEdit.Division = Int32.Parse(Division_TextBox.Text);
+                boxerToEdit.DateOfBirth = DateTime.Parse(DateOfBirth_TextBox.Text);
+                db.SaveChanges();
+            }
+
+            Close();
         }
 
         private void Cancel_Button_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
-
+            Close();
         }
     }
 }
