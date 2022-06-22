@@ -32,7 +32,9 @@ namespace boxrec
             
         }
 
-
+        // TODO
+        // okienko dodawania boxerów
+        // 
 
         public static List<Boxer> FetchBoxers()
         {
@@ -69,31 +71,31 @@ namespace boxrec
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Add_Boxer_Button_Click(object sender, RoutedEventArgs e)
         {
-            string connectionString = @"Data Source=localhost;Initial Catalog=boxrec;Integrated Security=True";
-            using (BoxrecContext db = new BoxrecContext(connectionString))
-            {
-                db.Boxers.Add(new Boxer { dateofbirth = DateTime.Parse(dateofbirth.Text), name = name.Text , division = int.Parse(kategoriawagowa.Text),  surname = surname.Text});
-                db.SaveChanges();
-                data_grid.ItemsSource = FetchBoxers();
-            }
+            //string connectionString = @"Data Source=localhost;Initial Catalog=boxrec;Integrated Security=True";
+            //using (BoxrecContext db = new BoxrecContext(connectionString))
+            //{
+            //    db.Boxers.Add(new Boxer { dateofbirth = DateTime.Parse(dateofbirth.Text), name = name.Text , division = int.Parse(kategoriawagowa.Text),  surname = surname.Text});
+            //    db.SaveChanges();
+            //    data_grid.ItemsSource = FetchBoxers();
+            //}
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Remove_Boxer_Button_Click(object sender, RoutedEventArgs e)
         {
-            string connectionString = @"Data Source=localhost;Initial Catalog=boxrec;Integrated Security=True";
-            using (BoxrecContext db = new BoxrecContext(connectionString))
-            {
-                int idToRemove = int.Parse(ID.Text);
-                Boxer BoxerToDelete = db.Boxers.First(c => c.ID == idToRemove);
-                db.Boxers.Remove(BoxerToDelete);
-                db.SaveChanges();
-                data_grid.ItemsSource = FetchBoxers();
-            }
+            //string connectionString = @"Data Source=localhost;Initial Catalog=boxrec;Integrated Security=True";
+            //using (BoxrecContext db = new BoxrecContext(connectionString))
+            //{
+            //    int idToRemove = int.Parse(ID.Text);
+            //    Boxer BoxerToDelete = db.Boxers.First(c => c.ID == idToRemove);
+            //    db.Boxers.Remove(BoxerToDelete);
+            //    db.SaveChanges();
+            //    data_grid.ItemsSource = FetchBoxers();
+            //}
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void Edit_Boxer_Button_Click(object sender, RoutedEventArgs e)
         {
 
         }

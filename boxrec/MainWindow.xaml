@@ -8,41 +8,35 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0*"/>
-            <ColumnDefinition Width="159*"/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <DataGrid x:Name="data_grid" Margin="0,217,0,0" Grid.ColumnSpan="3" AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="data_grid_SelectionChanged">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <DataGrid x:Name="data_grid" Grid.ColumnSpan="4" Grid.Row="1"  AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="data_grid_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding ID}" Header="ID" Width="50" />
                 <DataGridTextColumn Binding="{Binding name}" Header="name" Width="100" />
                 <DataGridTextColumn Binding="{Binding surname}" Header="surname" Width="100" />
                 <DataGridTextColumn Binding="{Binding division}" Header="division" Width="100" />
                 <DataGridTextColumn Binding="{Binding dateofbirth}" Header="date of birth" Width="200" />
-                <DataGridTemplateColumn>
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button Click="ChangeText" CommandParameter="{Binding Path=ID}" >Show details</Button>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+                <DataGridTextColumn Binding="{Binding record}" Header="record" Width="*" />
             </DataGrid.Columns>
             <DataGrid.ContextMenu>
                 <ContextMenu>
+                    <MenuItem Header="Show details"></MenuItem>
                     <MenuItem Header="Edit"></MenuItem>
                     <MenuItem Header="Delete"></MenuItem>
-                    <MenuItem Header="ShowDetails"></MenuItem>
                 </ContextMenu>
             </DataGrid.ContextMenu>
         </DataGrid>
-        <TextBox TextWrapping="Wrap" Text="Name" x:Name="name" Margin="10,10,564,364" TextChanged="Name_TextChanged" Grid.ColumnSpan="2"/>
-        <TextBox TextWrapping="Wrap" Text="Second Name" x:Name="surname" Margin="10,75,564,299" TextChanged="SecondName_TextChanged" Grid.ColumnSpan="2"/>
-        <TextBox TextWrapping="Wrap" Text="Date of birth" x:Name="dateofbirth" Margin="10,140,564,234" TextChanged="dateofbirth_TextChanged" Grid.ColumnSpan="2"/>
-        <TextBox TextWrapping="Wrap" Text="Division" x:Name="kategoriawagowa" Margin="246,10,328,364" TextChanged="kategoriawagowa_TextChanged" Grid.ColumnSpan="2" />
-        <Button Content="Add boxer" HorizontalAlignment="Left" Margin="584,15,0,0" VerticalAlignment="Top" Width="172" Height="40" Click="Button_Click" Grid.ColumnSpan="2"/>
-        <Button Content="Remove boxer (ID)" HorizontalAlignment="Left" Margin="584,75,0,0" VerticalAlignment="Top" Width="172" Height="40" Click="Button_Click_1" Grid.ColumnSpan="2"/>
-        <Button Content="Edit boxer (ID)" HorizontalAlignment="Left" Margin="584,140,0,0" VerticalAlignment="Top" Width="172" Height="40" Click="Button_Click_2" Grid.ColumnSpan="2"/>
-        <TextBox TextWrapping="Wrap" x:Name="ID" Text="ID" Margin="486,10,233,364" Grid.ColumnSpan="2"/>
 
+        <Button x:Name="Add_Boxer_Button" Content="Add boxer" Grid.Column="0" Margin ="50 50 50 50" Click="Add_Boxer_Button_Click"/>
+        <Button x:Name="Edit_Boxer_Button" Content="Edit boxer" Grid.Column="1" Margin ="50 50 50 50" Click="Edit_Boxer_Button_Click"/>
+        <Button x:Name="Remove_Boxer_Button" Content="Remove boxer" Grid.Column="2" Margin="50 50 50 50" Click="Remove_Boxer_Button_Click"/>
+        
     </Grid>
 </Window>

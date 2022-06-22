@@ -13,6 +13,14 @@ namespace boxrec
         public string surname { get; set; }
         public DateTime dateofbirth { get; set; }
         public int division { get; set; }
+        public string record { get => GetRecord(); }
+
+        public string GetRecord()
+        {
+            return "siema";
+        }
     }
+
+
 
 }
