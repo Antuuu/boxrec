@@ -27,9 +27,9 @@
             </DataGrid.Columns>
             <DataGrid.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Header="Show details"></MenuItem>
-                    <MenuItem Header="Edit"></MenuItem>
-                    <MenuItem Header="Delete"></MenuItem>
+                    <MenuItem Header="Show details" Click="Show_Details_Click"></MenuItem>
+                    <MenuItem Header="Edit" Click="Edit_Boxer_Button_Click"></MenuItem>
+                    <MenuItem Header="Delete" Click="Remove_Boxer_Button_Click"></MenuItem>
                 </ContextMenu>
             </DataGrid.ContextMenu>
         </DataGrid>

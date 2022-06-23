@@ -31,7 +31,6 @@ namespace boxrec
         // obsługa inputów w add & edit
         // dodanie obsługi zdarzeń save w add&edit dla optymalizacji? 
         // okienko show details, w tym datagrid z walkami, dodawanie/edycja walk, wyswietlanie tytułów
-        // rightclicki na datagridzie
 
 
         public MainWindow()
@@ -53,15 +52,15 @@ namespace boxrec
 
         private void ChangeText(object sender, RoutedEventArgs e)
         {
-            int id = (int)((Button)sender).CommandParameter;
-            using (BoxrecContext db = new BoxrecContext(connectionString))
-            {
-                Boxer boxer = db.Boxers.First(c => c.ID == id);
-                InitializeComponent();
-                Boxer_Details p = new Boxer_Details();
-                p.Show();
-                p.DataContext = boxer;
-            }
+            //int id = (int)((Button)sender).CommandParameter;
+            //using (BoxrecContext db = new BoxrecContext(connectionString))
+            //{
+            //    Boxer boxer = db.Boxers.First(c => c.ID == id);
+            //    InitializeComponent();
+            //    Boxer_Details p = new Boxer_Details();
+            //    p.Show();
+            //    p.DataContext = boxer;
+            //}
 
         }
 
@@ -126,6 +125,24 @@ namespace boxrec
         private void Boxers_DataGrid_SelectionChanged(object sender, RoutedEventArgs e)
         {
 
+        }
+
+
+        private void Show_Details_Click(object sender, RoutedEventArgs e)
+        {
+            Boxer boxerToEdit = (Boxer)Boxers_DataGrid.SelectedItem;
+            BoxerDetails boxerDetails = new BoxerDetails();
+
+            boxerDetails.DataContext = boxerToEdit;
+            
+            boxerDetails.ID_TextBox.Text = boxerToEdit.ID.ToString();
+            boxerDetails.Name_TextBox.Text = boxerToEdit.Name;
+            boxerDetails.Surname_TextBox.Text = boxerToEdit.Surname;
+            boxerDetails.Division_TextBox.Text = boxerToEdit.Division.ToString();
+            boxerDetails.DateOfBirth_TextBox.Text = boxerToEdit.DateOfBirth.ToString();
+
+
+            boxerDetails.ShowDialog();
         }
 
     }
