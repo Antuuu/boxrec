@@ -19,6 +19,10 @@ namespace boxrec
         {
             return "siema";
         }
+        public string GetDivision()
+        {
+            return "siema";
+        }
     }
 
 
