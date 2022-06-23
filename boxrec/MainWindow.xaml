@@ -11,6 +11,7 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -34,9 +35,9 @@
             </DataGrid.ContextMenu>
         </DataGrid>
 
-        <Button x:Name="Add_Boxer_Button" Content="Add boxer" Grid.Column="0" Margin ="50 50 50 50" Click="Add_Boxer_Button_Click"/>
-        <Button x:Name="Edit_Boxer_Button" Content="Edit boxer" Grid.Column="1" Margin ="50 50 50 50" Click="Edit_Boxer_Button_Click"/>
-        <Button x:Name="Remove_Boxer_Button" Content="Remove boxer" Grid.Column="2" Margin="50 50 50 50" Click="Remove_Boxer_Button_Click"/>
-        
+        <Button x:Name="btnAddBoxer" Content="Add boxer" Grid.Column="0" Margin ="50 50 50 50" Click="Add_Boxer_Button_Click"/>
+        <Button x:Name="btnEditBoxer" Content="Edit boxer" Grid.Column="1" Margin ="50 50 50 50" Click="Edit_Boxer_Button_Click"/>
+        <Button x:Name="btnRemoveBoxer" Content="Remove boxer" Grid.Column="2" Margin="50 50 50 50" Click="Remove_Boxer_Button_Click"/>
+        <Button x:Name="btnFightsEditor" Content="Fights editor" Grid.Column="3" Margin="50 50 50 50"/>
     </Grid>
 </Window>

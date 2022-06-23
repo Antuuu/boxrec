@@ -94,6 +94,7 @@ namespace boxrec
                 Boxers_DataGrid.ItemsSource = FetchBoxers();
             }
         }
+        
 
         private void Edit_Boxer_Button_Click(object sender, RoutedEventArgs e)
         {
@@ -116,7 +117,6 @@ namespace boxrec
                     editBoxer.ShowDialog();
                 }
             }
-
             Boxers_DataGrid.ItemsSource = FetchBoxers();
 
         }
