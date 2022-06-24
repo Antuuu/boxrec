@@ -17,23 +17,23 @@ namespace boxrec
     /// <summary>
     /// Interaction logic for AddBoxer.xaml
     /// </summary>
-    public partial class AddBoxer : Window
+    public partial class AddBoxerWindow : Window
     {
-        public AddBoxer()
+        public AddBoxerWindow()
         {
             InitializeComponent();
         }
 
-        private void Save_Button_Click(object sender, RoutedEventArgs e)
+        private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             using (BoxrecContext db = new BoxrecContext(MainWindow.connectionString))
             {
                 Boxer boxerToAdd = new Boxer 
                 { 
-                    Name = Name_TextBox.Text, 
-                    Surname = Surname_TextBox.Text, 
-                    Division_ID = Int32.Parse(Division_TextBox.Text), 
-                    DateOfBirth = DateTime.Parse(DateOfBirth_TextBox.Text) 
+                    Name = txtName.Text, 
+                    Surname = txtSurname.Text, 
+                    Division_ID = Int32.Parse(txtDivision.Text), 
+                    DateOfBirth = DateTime.Parse(txtDateOfBirth.Text) 
                 };
 
                     db.Boxers.Add(boxerToAdd);
@@ -43,7 +43,7 @@ namespace boxrec
             Close();
         }
 
-        private void Cancel_Button_Click(object sender, RoutedEventArgs e)
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }

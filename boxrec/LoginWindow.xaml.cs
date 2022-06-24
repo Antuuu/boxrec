@@ -18,14 +18,14 @@ namespace boxrec
     /// <summary>
     /// Interaction logic for LoginScreen.xaml
     /// </summary>
-    public partial class LoginScreen : Window
+    public partial class LoginWindow : Window
     {
-        public LoginScreen()
+        public LoginWindow()
         {
             InitializeComponent();
         }
 
-        private void Submit_Button_Click(object sender, RoutedEventArgs e)
+        private void btnSubmit_Click(object sender, RoutedEventArgs e)
         {
             SqlConnection sqlCon = new SqlConnection(@"Data Source=localhost;Initial Catalog=boxrec;Integrated Security=True");
             try

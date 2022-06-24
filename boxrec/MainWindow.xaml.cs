@@ -36,7 +36,7 @@ namespace boxrec
         public MainWindow()
         {
             InitializeComponent();
-            Boxers_DataGrid.ItemsSource = FetchBoxers();
+            dgridBoxers.ItemsSource = FetchBoxers();
         }
 
 
@@ -49,89 +49,59 @@ namespace boxrec
             }
         }
 
-
-        private void ChangeText(object sender, RoutedEventArgs e)
+        private void btnAddBoxer_Click(object sender, RoutedEventArgs e)
         {
-            //int id = (int)((Button)sender).CommandParameter;
-            //using (BoxrecContext db = new BoxrecContext(connectionString))
-            //{
-            //    Boxer boxer = db.Boxers.First(c => c.ID == id);
-            //    InitializeComponent();
-            //    Boxer_Details p = new Boxer_Details();
-            //    p.Show();
-            //    p.DataContext = boxer;
-            //}
-
-        }
-
-        private void Name_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-        private void SecondName_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void Add_Boxer_Button_Click(object sender, RoutedEventArgs e)
-        {
-            AddBoxer addBoxer = new AddBoxer();
+            AddBoxerWindow addBoxer = new AddBoxerWindow();
             addBoxer.ShowDialog();
-            Boxers_DataGrid.ItemsSource = FetchBoxers();
+            dgridBoxers.ItemsSource = FetchBoxers();
         }
 
-        private void Remove_Boxer_Button_Click(object sender, RoutedEventArgs e)
+        private void btnRemoveBoxer_Click(object sender, RoutedEventArgs e)
         {
             using (BoxrecContext db = new BoxrecContext(connectionString))
             {
-                if (Boxers_DataGrid.SelectedItem != null)
+                if (dgridBoxers.SelectedItem != null)
                 {
 
-                    Boxer boxerToRemove = (Boxer)Boxers_DataGrid.SelectedItem;
+                    Boxer boxerToRemove = (Boxer)dgridBoxers.SelectedItem;
                     db.Boxers.Remove(boxerToRemove);
                     db.SaveChanges();
                 }
-                Boxers_DataGrid.ItemsSource = FetchBoxers();
+                dgridBoxers.ItemsSource = FetchBoxers();
             }
         }
         
 
-        private void Edit_Boxer_Button_Click(object sender, RoutedEventArgs e)
+        private void btnEditBoxer_Click(object sender, RoutedEventArgs e)
         {
             using (BoxrecContext db = new BoxrecContext(connectionString))
             {
-                if (Boxers_DataGrid.SelectedItem != null)
+                if (dgridBoxers.SelectedItem != null)
                 {
 
-                    Boxer boxerToEdit = (Boxer)Boxers_DataGrid.SelectedItem;
-                    EditBoxer editBoxer = new EditBoxer();
+                    Boxer boxerToEdit = (Boxer)dgridBoxers.SelectedItem;
+                    EditBoxerWindow editBoxer = new EditBoxerWindow();
 
                     editBoxer.DataContext = boxerToEdit;
 
-                    editBoxer.ID_TextBox.Text = boxerToEdit.ID.ToString();
-                    editBoxer.Name_TextBox.Text = boxerToEdit.Name;
-                    editBoxer.Surname_TextBox.Text = boxerToEdit.Surname;
-                    editBoxer.Division_TextBox.Text = boxerToEdit.Division_ID.ToString();
-                    editBoxer.DateOfBirth_TextBox.Text = boxerToEdit.DateOfBirth.ToString();
+                    editBoxer.txtID.Text = boxerToEdit.ID.ToString();
+                    editBoxer.txtName.Text = boxerToEdit.Name;
+                    editBoxer.txtSurname.Text = boxerToEdit.Surname;
+                    editBoxer.txtDivision.Text = boxerToEdit.Division_ID.ToString();
+                    editBoxer.txtDateOfBirth.Text = boxerToEdit.DateOfBirth.ToString();
 
                     editBoxer.ShowDialog();
                 }
             }
-            Boxers_DataGrid.ItemsSource = FetchBoxers();
+            dgridBoxers.ItemsSource = FetchBoxers();
 
         }
 
 
-        private void Boxers_DataGrid_SelectionChanged(object sender, RoutedEventArgs e)
+        private void miViewDetails_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-
-        private void Show_Details_Click(object sender, RoutedEventArgs e)
-        {
-            Boxer boxerToEdit = (Boxer)Boxers_DataGrid.SelectedItem;
-            BoxerDetails boxerDetails = new BoxerDetails();
+            Boxer boxerToEdit = (Boxer)dgridBoxers.SelectedItem;
+            BoxerDetailsWindow boxerDetails = new BoxerDetailsWindow();
 
             boxerDetails.DataContext = boxerToEdit;
             
@@ -148,6 +118,13 @@ namespace boxrec
             boxerDetails.BoxerPhoto_Image.Source = bitmapImage;
 
             boxerDetails.ShowDialog();
+        }
+
+
+        private void btnFightsEditor_Click(object sender, RoutedEventArgs e)
+        {
+            FightsEditorWindow fightsEditor = new FightsEditorWindow();
+            fightsEditor.ShowDialog();
         }
 
     }

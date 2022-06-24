@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace boxrec
 {
     /// <summary>
-    /// Interaction logic for BoxerDetails.xaml
+    /// Interaction logic for BoxerDetailsWindow.xaml
     /// </summary>
-    public partial class BoxerDetails : Window
+    public partial class BoxerDetailsWindow : Window
     {
-        public BoxerDetails()
+        public BoxerDetailsWindow()
         {
             InitializeComponent();
         }

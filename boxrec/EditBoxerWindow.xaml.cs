@@ -17,33 +17,33 @@ namespace boxrec
     /// <summary>
     /// Interaction logic for EditBoxer.xaml
     /// </summary>
-    public partial class EditBoxer : Window
+    public partial class EditBoxerWindow : Window
     {
-        public EditBoxer()
+        public EditBoxerWindow()
         {
             InitializeComponent();
         }
 
 
-        private void Save_Button_Click(object sender, RoutedEventArgs e)
+        private void btnSave_Click(object sender, RoutedEventArgs e)
         { 
             using (BoxrecContext db = new BoxrecContext(MainWindow.connectionString))
             {
-                int idToEdit = Int32.Parse(ID_TextBox.Text);
+                int idToEdit = Int32.Parse(txtID.Text);
                 Boxer boxerToEdit = db.Boxers
                     .Where(x => x.ID == idToEdit)
                     .First();
-                boxerToEdit.Name = Name_TextBox.Text;
-                boxerToEdit.Surname = Surname_TextBox.Text;
-                boxerToEdit.Division_ID = Int32.Parse(Division_TextBox.Text);
-                boxerToEdit.DateOfBirth = DateTime.Parse(DateOfBirth_TextBox.Text);
+                boxerToEdit.Name = txtName.Text;
+                boxerToEdit.Surname = txtSurname.Text;
+                boxerToEdit.Division_ID = Int32.Parse(txtDivision.Text);
+                boxerToEdit.DateOfBirth = DateTime.Parse(txtDateOfBirth.Text);
                 db.SaveChanges();
             }
 
             Close();
         }
 
-        private void Cancel_Button_Click(object sender, RoutedEventArgs e)
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
