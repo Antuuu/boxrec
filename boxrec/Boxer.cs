@@ -13,6 +13,7 @@ namespace boxrec
         public string? Surname { get; set; }
         public DateTime DateOfBirth { get; set; }
         public int Division_ID { get; set; }
+        public string? Photo_Url { get; set; }
         public string Record { get => GetRecord(); }
 
         public string GetRecord()

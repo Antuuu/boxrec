@@ -141,6 +141,11 @@ namespace boxrec
             boxerDetails.Division_TextBox.Text = boxerToEdit.Division_ID.ToString();
             boxerDetails.DateOfBirth_TextBox.Text = boxerToEdit.DateOfBirth.ToString();
 
+            var bitmapImage = new BitmapImage();
+            bitmapImage.BeginInit();
+            bitmapImage.UriSource = new Uri(boxerToEdit.Photo_Url.ToString());
+            bitmapImage.EndInit();
+            boxerDetails.BoxerPhoto_Image.Source = bitmapImage;
 
             boxerDetails.ShowDialog();
         }
