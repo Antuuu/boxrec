@@ -29,14 +29,14 @@ namespace boxrec
         { 
             using (BoxrecContext db = new BoxrecContext(MainWindow.connectionString))
             {
-                int idToEdit = Int32.Parse(txtID.Text);
+                int idToEdit = Int32.Parse(tbxID.Text);
                 Boxer boxerToEdit = db.Boxers
                     .Where(x => x.ID == idToEdit)
                     .First();
-                boxerToEdit.Name = txtName.Text;
-                boxerToEdit.Surname = txtSurname.Text;
-                boxerToEdit.Division_ID = Int32.Parse(txtDivision.Text);
-                boxerToEdit.DateOfBirth = DateTime.Parse(txtDateOfBirth.Text);
+                boxerToEdit.Name = tbxName.Text;
+                boxerToEdit.Surname = tbxSurname.Text;
+                boxerToEdit.Division_ID = Int32.Parse(tbxDivision.Text);
+                boxerToEdit.DateOfBirth = DateTime.Parse(tbxDateOfBirth.Text);
                 db.SaveChanges();
             }
 

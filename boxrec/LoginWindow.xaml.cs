@@ -37,8 +37,8 @@ namespace boxrec
                 SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
 
                 sqlCmd.CommandType = System.Data.CommandType.Text;
-                sqlCmd.Parameters.AddWithValue("@Username", txtUsername.Text);
-                sqlCmd.Parameters.AddWithValue("@Password", txtPassword.Password);
+                sqlCmd.Parameters.AddWithValue("@Username", tbxUsername.Text);
+                sqlCmd.Parameters.AddWithValue("@Password", tbxPassword.Password);
                 int count = Convert.ToInt32(sqlCmd.ExecuteScalar());
 
                 if (count == 1)

@@ -13,7 +13,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="100"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <DataGrid x:Name="dgridFights" Grid.ColumnSpan="4" Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True">
@@ -21,7 +21,7 @@
                 <DataGridTextColumn Binding="{Binding ID}" Header="ID" Width="50" />
                 <DataGridTextColumn Binding="{Binding Boxer1}" Header="Boxer 1" Width="200" />
                 <DataGridTextColumn Binding="{Binding Boxer2}" Header="Boxer 2" Width="200" />
-                <DataGridTextColumn Binding="{Binding Date}" Header="Date" Width="100" />
+                <DataGridTextColumn Binding="{Binding DateOfFight, StringFormat=\{0:dd-MM-yyyy\}}" Header="Date" Width="100" />
                 <DataGridTextColumn Binding="{Binding Winner}" Header="Winner" Width="*" />
             </DataGrid.Columns>
             <DataGrid.ContextMenu>
@@ -32,8 +32,8 @@
             </DataGrid.ContextMenu>
         </DataGrid>
 
-        <Button x:Name="btnAddFight" Content="Add fight" Grid.Column="0" Margin ="50 50 50 50" Click="btnAddFight_Click"/>
-        <Button x:Name="btnEditFight" Content="Edit fight" Grid.Column="1" Margin ="50 50 50 50" Click="btnEditFight_Click"/>
-        <Button x:Name="btnRemoveFight" Content="Remove fight" Grid.Column="2" Margin="50 50 50 50" Click="btnRemoveFight_Click"/>
+        <Button x:Name="btnAddFight" Content="Add fight" Grid.Column="0" Margin="30 30 30 30" Click="btnAddFight_Click"/>
+        <Button x:Name="btnEditFight" Content="Edit fight" Grid.Column="1" Margin ="30 30 30 30" Click="btnEditFight_Click"/>
+        <Button x:Name="btnRemoveFight" Content="Remove fight" Grid.Column="2" Margin="30 30 30 30" Click="btnRemoveFight_Click"/>
     </Grid>
 </Window>

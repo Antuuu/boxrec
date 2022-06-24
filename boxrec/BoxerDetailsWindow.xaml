@@ -23,29 +23,29 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="No." Width="55"></DataGridTextColumn>
                 <DataGridTextColumn Header="Opponent" Width="250"></DataGridTextColumn>
-                <DataGridTextColumn Header="Date" Width="200"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding DateOfFight, StringFormat=\{0:MM-dd-yyyy\}}" Header="Date" Width="200"></DataGridTextColumn>
                 <DataGridTextColumn Header="Result" Width="*"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Grid.Column="1" Grid.Row="0">
             <Label Content="ID:"></Label>
-            <TextBox x:Name="ID_TextBox" IsEnabled="False"></TextBox>
+            <TextBox x:Name="tbxID" IsEnabled="False"></TextBox>
             
             <Label Content="Name:"></Label>
-            <TextBox x:Name="Name_TextBox" IsEnabled="False"></TextBox>
+            <TextBox x:Name="tbxName" IsEnabled="False"></TextBox>
             
             <Label Content="Surname:"></Label>
-            <TextBox x:Name="Surname_TextBox" IsEnabled="False"></TextBox>
+            <TextBox x:Name="tbxSurname" IsEnabled="False"></TextBox>
             
             <Label Content="Division:"></Label>
-            <TextBox x:Name="Division_TextBox" IsEnabled="False"></TextBox>
+            <TextBox x:Name="tbxDivision" IsEnabled="False"></TextBox>
             
             <Label Content="Date of birth:"></Label>
-            <TextBox x:Name="DateOfBirth_TextBox" IsEnabled="False"></TextBox>
+            <TextBox x:Name="tbxDateOfBirth" IsEnabled="False"></TextBox>
             
         </StackPanel>
         <StackPanel Grid.Column="0" Grid.Row="0">
-            <Image Margin="5 5 5 5" x:Name="BoxerPhoto_Image" Source ="{Binding Photo_Url}" Width="190" Height="225"></Image>
+            <Image Margin="5 5 5 5" x:Name="imgBoxerPhoto" Source ="{Binding Photo_Url}" Width="190" Height="225"></Image>
         </StackPanel>
         <StackPanel Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="2">
             <Label Content="Titles" FontSize="18" HorizontalAlignment="Center"></Label>

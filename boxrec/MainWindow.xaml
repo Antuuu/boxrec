@@ -14,7 +14,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="100"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <DataGrid x:Name="dgridBoxers" Grid.ColumnSpan="4" Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True">
@@ -23,7 +23,7 @@
                 <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="100" />
                 <DataGridTextColumn Binding="{Binding Surname}" Header="Surname" Width="100" />
                 <DataGridTextColumn Binding="{Binding Division_ID}" Header="Division" Width="100" />
-                <DataGridTextColumn Binding="{Binding DateOfBirth}" Header="Date of birth" Width="200" />
+                <DataGridTextColumn Binding="{Binding DateOfBirth, StringFormat=\{0:dd-MM-yyyy\}}" Header="Date of birth" Width="200"/>
                 <DataGridTextColumn Binding="{Binding Record}" Header="Record" Width="*" />
             </DataGrid.Columns>
             <DataGrid.ContextMenu>
@@ -35,9 +35,9 @@
             </DataGrid.ContextMenu>
         </DataGrid>
 
-        <Button x:Name="btnAddBoxer" Content="Add boxer" Grid.Column="0" Margin ="50 50 50 50" Click="btnAddBoxer_Click"/>
-        <Button x:Name="btnEditBoxer" Content="Edit boxer" Grid.Column="1" Margin ="50 50 50 50" Click="btnEditBoxer_Click"/>
-        <Button x:Name="btnRemoveBoxer" Content="Remove boxer" Grid.Column="2" Margin="50 50 50 50" Click="btnRemoveBoxer_Click"/>
-        <Button x:Name="btnFightsEditor" Content="Fights editor" Grid.Column="3" Margin="50 50 50 50" Click="btnFightsEditor_Click"/>
+        <Button x:Name="btnAddBoxer" Content="Add boxer" Grid.Column="0" Margin ="30 30 30 30" Click="btnAddBoxer_Click"/>
+        <Button x:Name="btnEditBoxer" Content="Edit boxer" Grid.Column="1" Margin ="30 30 30 30" Click="btnEditBoxer_Click"/>
+        <Button x:Name="btnRemoveBoxer" Content="Remove boxer" Grid.Column="2" Margin="30 30 30 30" Click="btnRemoveBoxer_Click"/>
+        <Button x:Name="btnFightsEditor" Content="Fights editor" Grid.Column="3" Margin="30 30 30 30" Click="btnFightsEditor_Click"/>
     </Grid>
 </Window>

@@ -30,10 +30,10 @@ namespace boxrec
             {
                 Boxer boxerToAdd = new Boxer 
                 { 
-                    Name = txtName.Text, 
-                    Surname = txtSurname.Text, 
-                    Division_ID = Int32.Parse(txtDivision.Text), 
-                    DateOfBirth = DateTime.Parse(txtDateOfBirth.Text) 
+                    Name = tbxName.Text, 
+                    Surname = tbxSurname.Text, 
+                    Division_ID = Int32.Parse(tbxDivision.Text), 
+                    DateOfBirth = DateTime.Parse(tbxDateOfBirth.Text) 
                 };
 
                     db.Boxers.Add(boxerToAdd);

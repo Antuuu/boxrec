@@ -11,9 +11,9 @@
         <Label FontSize="25" HorizontalAlignment="Center" Margin="20" Content="Login"></Label>
             <Separator></Separator>
             <Label Content="Username:"></Label>
-            <TextBox Name="txtUsername"></TextBox>
+            <TextBox Name="tbxUsername"></TextBox>
             <Label Content="Password:"></Label>
-            <PasswordBox Name="txtPassword"></PasswordBox>
+            <PasswordBox Name="tbxPassword"></PasswordBox>
             <Button Click="btnSubmit_Click" x:Name="btnSubmit" Content="Submit" Margin="50 40"></Button>
         </StackPanel>
     </Border>

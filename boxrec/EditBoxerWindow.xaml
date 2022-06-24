@@ -8,17 +8,17 @@
         Title="Edit boxer" Height="430" Width="320">
     <StackPanel>
         <Label Content="ID:"></Label>
-        <TextBox x:Name="txtID" Margin="5 5 200 5" IsEnabled="False"></TextBox>
+        <TextBox x:Name="tbxID" Margin="5 5 200 5" IsEnabled="False"></TextBox>
         <Label Content="Name:"></Label>
-        <TextBox x:Name="txtName" Margin="5 5 5 5"></TextBox>
+        <TextBox x:Name="tbxName" Margin="5 5 5 5"></TextBox>
         <Label Content="Surname:"></Label>
-        <TextBox x:Name="txtSurname" Margin="5 5 5 5"></TextBox>
+        <TextBox x:Name="tbxSurname" Margin="5 5 5 5"></TextBox>
         <Label Content="Division:"></Label>
-        <TextBox x:Name="txtDivision" Margin="5 5 5 5"></TextBox>
+        <TextBox x:Name="tbxDivision" Margin="5 5 5 5"></TextBox>
         <Label Content="Date of birth:"></Label>
-        <TextBox x:Name="txtDateOfBirth" Margin="5 5 5 5"></TextBox>
+        <TextBox x:Name="tbxDateOfBirth" Margin="5 5 5 5"></TextBox>
         <Label Content="Image URL:"></Label>
-        <TextBox x:Name="txtImageURL" Margin="5 5 5 5"></TextBox>
+        <TextBox x:Name="tbxImageURL" Margin="5 5 5 5"></TextBox>
         <Grid>
             <Button Click="btnSave_Click" HorizontalAlignment="Left" Width="130" x:Name="btnSave" Content="Save" Margin="20 20 150 150"></Button>
             <Button Click="btnCancel_Click" HorizontalAlignment="Right" Width="130" x:Name="btnCancel" Content="Cancel" Margin="150 20 20 150"></Button>

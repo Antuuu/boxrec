@@ -84,47 +84,53 @@ namespace boxrec
 
                     editBoxer.DataContext = boxerToEdit;
 
-                    editBoxer.txtID.Text = boxerToEdit.ID.ToString();
-                    editBoxer.txtName.Text = boxerToEdit.Name;
-                    editBoxer.txtSurname.Text = boxerToEdit.Surname;
-                    editBoxer.txtDivision.Text = boxerToEdit.Division_ID.ToString();
-                    editBoxer.txtDateOfBirth.Text = boxerToEdit.DateOfBirth.ToString();
+                    editBoxer.tbxID.Text = boxerToEdit.ID.ToString();
+                    editBoxer.tbxName.Text = boxerToEdit.Name;
+                    editBoxer.tbxSurname.Text = boxerToEdit.Surname;
+                    editBoxer.tbxDivision.Text = boxerToEdit.Division_ID.ToString();
+                    editBoxer.tbxDateOfBirth.Text = boxerToEdit.DateOfBirth.ToString();
 
                     editBoxer.ShowDialog();
                 }
             }
-            dgridBoxers.ItemsSource = FetchBoxers();
 
+            dgridBoxers.ItemsSource = FetchBoxers();
         }
 
 
         private void miViewDetails_Click(object sender, RoutedEventArgs e)
         {
-            Boxer boxerToEdit = (Boxer)dgridBoxers.SelectedItem;
-            BoxerDetailsWindow boxerDetails = new BoxerDetailsWindow();
+            if (dgridBoxers.SelectedItem != null)
+            {
+                Boxer boxerToEdit = (Boxer)dgridBoxers.SelectedItem;
+                BoxerDetailsWindow boxerDetails = new BoxerDetailsWindow();
 
-            boxerDetails.DataContext = boxerToEdit;
+                boxerDetails.DataContext = boxerToEdit;
+
+                boxerDetails.tbxID.Text = boxerToEdit.ID.ToString();
+                boxerDetails.tbxName.Text = boxerToEdit.Name;
+                boxerDetails.tbxSurname.Text = boxerToEdit.Surname;
+                boxerDetails.tbxDivision.Text = boxerToEdit.Division_ID.ToString();
+                boxerDetails.tbxDateOfBirth.Text = boxerToEdit.DateOfBirth.ToString("dd-MM-yyyy");
+
+                var bitmapImage = new BitmapImage();
+                bitmapImage.BeginInit();
+                bitmapImage.UriSource = new Uri(boxerToEdit.Photo_Url.ToString());
+                bitmapImage.EndInit();
+                boxerDetails.imgBoxerPhoto.Source = bitmapImage;
+
+                boxerDetails.ShowDialog();
+            }
             
-            boxerDetails.ID_TextBox.Text = boxerToEdit.ID.ToString();
-            boxerDetails.Name_TextBox.Text = boxerToEdit.Name;
-            boxerDetails.Surname_TextBox.Text = boxerToEdit.Surname;
-            boxerDetails.Division_TextBox.Text = boxerToEdit.Division_ID.ToString();
-            boxerDetails.DateOfBirth_TextBox.Text = boxerToEdit.DateOfBirth.ToString();
-
-            var bitmapImage = new BitmapImage();
-            bitmapImage.BeginInit();
-            bitmapImage.UriSource = new Uri(boxerToEdit.Photo_Url.ToString());
-            bitmapImage.EndInit();
-            boxerDetails.BoxerPhoto_Image.Source = bitmapImage;
-
-            boxerDetails.ShowDialog();
         }
 
 
         private void btnFightsEditor_Click(object sender, RoutedEventArgs e)
         {
             FightsEditorWindow fightsEditor = new FightsEditorWindow();
+
             fightsEditor.ShowDialog();
+
         }
 
     }
