@@ -35,7 +35,7 @@ namespace boxrec
                     .First();
                 boxerToEdit.Name = Name_TextBox.Text;
                 boxerToEdit.Surname = Surname_TextBox.Text;
-                boxerToEdit.Division = Int32.Parse(Division_TextBox.Text);
+                boxerToEdit.Division_ID = Int32.Parse(Division_TextBox.Text);
                 boxerToEdit.DateOfBirth = DateTime.Parse(DateOfBirth_TextBox.Text);
                 db.SaveChanges();
             }

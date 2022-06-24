@@ -111,7 +111,7 @@ namespace boxrec
                     editBoxer.ID_TextBox.Text = boxerToEdit.ID.ToString();
                     editBoxer.Name_TextBox.Text = boxerToEdit.Name;
                     editBoxer.Surname_TextBox.Text = boxerToEdit.Surname;
-                    editBoxer.Division_TextBox.Text = boxerToEdit.Division.ToString();
+                    editBoxer.Division_TextBox.Text = boxerToEdit.Division_ID.ToString();
                     editBoxer.DateOfBirth_TextBox.Text = boxerToEdit.DateOfBirth.ToString();
 
                     editBoxer.ShowDialog();
@@ -138,7 +138,7 @@ namespace boxrec
             boxerDetails.ID_TextBox.Text = boxerToEdit.ID.ToString();
             boxerDetails.Name_TextBox.Text = boxerToEdit.Name;
             boxerDetails.Surname_TextBox.Text = boxerToEdit.Surname;
-            boxerDetails.Division_TextBox.Text = boxerToEdit.Division.ToString();
+            boxerDetails.Division_TextBox.Text = boxerToEdit.Division_ID.ToString();
             boxerDetails.DateOfBirth_TextBox.Text = boxerToEdit.DateOfBirth.ToString();
 
 

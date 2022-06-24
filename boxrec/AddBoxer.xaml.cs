@@ -32,7 +32,7 @@ namespace boxrec
                 { 
                     Name = Name_TextBox.Text, 
                     Surname = Surname_TextBox.Text, 
-                    Division = Int32.Parse(Division_TextBox.Text), 
+                    Division_ID = Int32.Parse(Division_TextBox.Text), 
                     DateOfBirth = DateTime.Parse(DateOfBirth_TextBox.Text) 
                 };
 
