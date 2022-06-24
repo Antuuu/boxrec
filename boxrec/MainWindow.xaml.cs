@@ -49,6 +49,33 @@ namespace boxrec
             }
         }
 
+        public static List<Fight> FetchFights(Boxer boxer)
+        {
+            using (BoxrecContext db = new BoxrecContext(connectionString))
+            {
+                List<Fight> fights = new List<Fight>();
+                var query = from f in db.Fights where f.Boxer1_ID == boxer.ID || f.Boxer2_ID == boxer.ID select f ;
+                return fights = query.ToList();
+            }
+        }
+
+        public void GetRecord(Boxer boxer)
+        {
+            using (BoxrecContext db = new BoxrecContext(connectionString))
+            {
+
+                var wins = from f in db.Fights where f.Winner_ID == boxer.ID select f;
+                boxer.Wins = wins.Count();
+                var loses = from f in db.Fights where (f.Boxer1_ID == boxer.ID || f.Boxer2_ID == boxer.ID) && f.Winner_ID != boxer.ID select f;
+                boxer.Loses = loses.Count();
+                var draws = from f in db.Fights where (f.Boxer1_ID == boxer.ID || f.Boxer2_ID == boxer.ID) && f.Winner_ID == null select f;
+                boxer.Draws = draws.Count();
+
+            }
+        }
+
+
+
         private void btnAddBoxer_Click(object sender, RoutedEventArgs e)
         {
             AddBoxerWindow addBoxer = new AddBoxerWindow();
@@ -102,22 +129,33 @@ namespace boxrec
         {
             if (dgridBoxers.SelectedItem != null)
             {
-                Boxer boxerToEdit = (Boxer)dgridBoxers.SelectedItem;
+                Boxer boxerToShow = (Boxer)dgridBoxers.SelectedItem;
                 BoxerDetailsWindow boxerDetails = new BoxerDetailsWindow();
 
-                boxerDetails.DataContext = boxerToEdit;
 
-                boxerDetails.tbxID.Text = boxerToEdit.ID.ToString();
-                boxerDetails.tbxName.Text = boxerToEdit.Name;
-                boxerDetails.tbxSurname.Text = boxerToEdit.Surname;
-                boxerDetails.tbxDivision.Text = boxerToEdit.Division_ID.ToString();
-                boxerDetails.tbxDateOfBirth.Text = boxerToEdit.DateOfBirth.ToString("dd-MM-yyyy");
+                boxerDetails.DataContext = boxerToShow;
+
+                boxerDetails.tbxID.Text = boxerToShow.ID.ToString();
+                boxerDetails.tbxName.Text = boxerToShow.Name;
+                boxerDetails.tbxSurname.Text = boxerToShow.Surname;
+                boxerDetails.tbxDivision.Text = boxerToShow.Division_ID.ToString();
+                boxerDetails.tbxDateOfBirth.Text = boxerToShow.DateOfBirth.ToString("dd-MM-yyyy");
 
                 var bitmapImage = new BitmapImage();
                 bitmapImage.BeginInit();
-                bitmapImage.UriSource = new Uri(boxerToEdit.Photo_Url.ToString());
+                bitmapImage.UriSource = new Uri(boxerToShow.Photo_Url.ToString());
                 bitmapImage.EndInit();
                 boxerDetails.imgBoxerPhoto.Source = bitmapImage;
+
+               
+                var fights = FetchFights(boxerToShow);
+                boxerDetails.dgridBoxerFights.ItemsSource = fights;
+                // generate and setup record of boxer
+                GetRecord(boxerToShow);
+                boxerDetails.tbxWins.Text = boxerToShow.Wins.ToString();
+                boxerDetails.tbxDraws.Text = boxerToShow.Draws.ToString();
+                boxerDetails.tbxLoses.Text = boxerToShow.Loses.ToString();
+
 
                 boxerDetails.ShowDialog();
             }

@@ -11,6 +11,8 @@ namespace boxrec
     {
         public DbSet<Boxer> Boxers { get; set; }
 
+        public DbSet<Fight> Fights { get; set; }
+
         public string ConnectionString { get; }
 
         public BoxrecContext(string connectionString)
