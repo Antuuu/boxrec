@@ -36,7 +36,7 @@ namespace boxrec
                 boxerToEdit.Name = tbxName.Text;
                 boxerToEdit.Surname = tbxSurname.Text;
                 boxerToEdit.Division_ID = Int32.Parse(tbxDivision.Text);
-                boxerToEdit.DateOfBirth = DateTime.Parse(tbxDateOfBirth.Text);
+                boxerToEdit.DateOfBirth = dpDateOfBirth.SelectedDate;
                 db.SaveChanges();
             }
 

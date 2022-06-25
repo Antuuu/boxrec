@@ -14,7 +14,7 @@
         <Label Content="Division:"></Label>
         <TextBox x:Name="tbxDivision" Margin="5 5 5 5"></TextBox>
         <Label Content="Date of birth:"></Label>
-        <TextBox x:Name="tbxDateOfBirth" Margin="5 5 5 5"></TextBox>
+        <DatePicker x:Name="dpDateOfBirth" Margin="5 5 5 5" SelectedDate="01-01-1990"></DatePicker>
         <Label Content="Image URL:"></Label>
         <TextBox x:Name="tbxImageURL" Margin="5 5 5 5"></TextBox>
         <Grid>

@@ -28,12 +28,12 @@ namespace boxrec
         {
             using (BoxrecContext db = new BoxrecContext(MainWindow.connectionString))
             {
-                Boxer boxerToAdd = new Boxer 
-                { 
-                    Name = tbxName.Text, 
-                    Surname = tbxSurname.Text, 
-                    Division_ID = Int32.Parse(tbxDivision.Text), 
-                    DateOfBirth = DateTime.Parse(tbxDateOfBirth.Text) 
+                Boxer boxerToAdd = new Boxer
+                {
+                    Name = tbxName.Text,
+                    Surname = tbxSurname.Text,
+                    Division_ID = Int32.Parse(tbxDivision.Text),
+                    DateOfBirth = dpDateOfBirth.SelectedDate,
                 };
 
                     db.Boxers.Add(boxerToAdd);

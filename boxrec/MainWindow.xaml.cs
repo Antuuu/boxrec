@@ -26,11 +26,6 @@ namespace boxrec
     {
         public static string connectionString = @"Data Source=localhost;Initial Catalog=boxrec;Integrated Security=True";
 
-        // TODO
-        // tabele w SQL? - walki, dywizje
-        // obsługa inputów w add & edit
-        // dodanie obsługi zdarzeń save w add&edit dla optymalizacji? 
-        // okienko show details, w tym datagrid z walkami, dodawanie/edycja walk, wyswietlanie tytułów
 
 
         public MainWindow()
@@ -54,7 +49,7 @@ namespace boxrec
             using (BoxrecContext db = new BoxrecContext(connectionString))
             {
                 List<Fight> fights = new List<Fight>();
-                var query = from f in db.Fights where f.Boxer1_ID == boxer.ID || f.Boxer2_ID == boxer.ID select f ;
+                var query = from f in db.Fights where f.Boxer1_ID == boxer.ID || f.Boxer2_ID == boxer.ID select f;
                 return fights = query.ToList();
             }
         }
@@ -115,7 +110,7 @@ namespace boxrec
                     editBoxer.tbxName.Text = boxerToEdit.Name;
                     editBoxer.tbxSurname.Text = boxerToEdit.Surname;
                     editBoxer.tbxDivision.Text = boxerToEdit.Division_ID.ToString();
-                    editBoxer.tbxDateOfBirth.Text = boxerToEdit.DateOfBirth.ToString();
+                    editBoxer.dpDateOfBirth.SelectedDate = boxerToEdit.DateOfBirth;
 
                     editBoxer.ShowDialog();
                 }
@@ -139,7 +134,7 @@ namespace boxrec
                 boxerDetails.tbxName.Text = boxerToShow.Name;
                 boxerDetails.tbxSurname.Text = boxerToShow.Surname;
                 boxerDetails.tbxDivision.Text = boxerToShow.Division_ID.ToString();
-                boxerDetails.tbxDateOfBirth.Text = boxerToShow.DateOfBirth.ToString("dd-MM-yyyy");
+                boxerDetails.tbxDateOfBirth.Text = boxerToShow.DateOfBirth?.ToString("dd-MM-yyyy") ?? "N/A";
 
                 var bitmapImage = new BitmapImage();
                 bitmapImage.BeginInit();

@@ -22,7 +22,7 @@
                 <DataGridTextColumn Binding="{Binding ID}" Header="ID" Width="50" />
                 <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="100" />
                 <DataGridTextColumn Binding="{Binding Surname}" Header="Surname" Width="100" />
-                <DataGridTextColumn Binding="{Binding Division_ID}" Header="Division" Width="100" />
+                <DataGridTextColumn Binding="{Binding Division}" Header="Division" Width="100" />
                 <DataGridTextColumn Binding="{Binding DateOfBirth, StringFormat=\{0:dd-MM-yyyy\}}" Header="Date of birth" Width="200"/>
                 <DataGridTextColumn Binding="{Binding Record}" Header="Record" Width="*" />
             </DataGrid.Columns>

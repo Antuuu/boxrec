@@ -9,15 +9,20 @@
     <StackPanel>
         <Label Content="ID:"></Label>
         <TextBox x:Name="tbxID" Margin="5 5 200 5" IsEnabled="False"></TextBox>
+        
         <Label Content="Name:"></Label>
         <TextBox x:Name="tbxName" Margin="5 5 5 5"></TextBox>
+        
         <Label Content="Surname:"></Label>
         <TextBox x:Name="tbxSurname" Margin="5 5 5 5"></TextBox>
+        
         <Label Content="Division:"></Label>
         <TextBox x:Name="tbxDivision" Margin="5 5 5 5"></TextBox>
+        
         <Label Content="Date of birth:"></Label>
-        <TextBox x:Name="tbxDateOfBirth" Margin="5 5 5 5"></TextBox>
-        <Label Content="Image URL:"></Label>
+        <DatePicker x:Name="dpDateOfBirth"></DatePicker>
+
+            <Label Content="Image URL:"></Label>
         <TextBox x:Name="tbxImageURL" Margin="5 5 5 5"></TextBox>
         <Grid>
             <Button Click="btnSave_Click" HorizontalAlignment="Left" Width="130" x:Name="btnSave" Content="Save" Margin="20 20 150 150"></Button>
