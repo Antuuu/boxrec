@@ -21,10 +21,27 @@
         <Label Content="History of fights:" Grid.Row="1"></Label>
         <DataGrid x:Name="dgridBoxerFights" Grid.Row="2" Margin="0 10 0 0" Grid.ColumnSpan="4" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="No." Width="55"></DataGridTextColumn>
+                <DataGridTextColumn Header="No." Binding="{Binding FightNumber}" Width="55"></DataGridTextColumn>
                 <DataGridTextColumn Header="Opponent" Width="250"></DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding DateOfFight, StringFormat=\{0:MM-dd-yyyy\}}" Header="Date" Width="200"></DataGridTextColumn>
-                <DataGridTextColumn Header="Result" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Result"  Binding="{Binding FightResult}" Width="*">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Style.Triggers>
+                                <Trigger Property="Text" Value="Win">
+                                    <Setter Property="Background" Value="#FF69C441"/>
+                                </Trigger>
+                                <Trigger Property="Text" Value="Lose">
+                                        <Setter Property="Background" Value="#FFDA1010"/>
+                                </Trigger>
+                                <Trigger Property="Text" Value="Draw">
+                                    <Setter Property="Background" Value="#FF9B8D8D"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+
+                </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Grid.Column="1" Grid.Row="0">

@@ -49,23 +49,33 @@ namespace boxrec
             using (BoxrecContext db = new BoxrecContext(connectionString))
             {
                 List<Fight> fights = new List<Fight>();
-                var query = from f in db.Fights where f.Boxer1_ID == boxer.ID || f.Boxer2_ID == boxer.ID select f;
-                return fights = query.ToList();
-            }
-        }
+                fights = (from f in db.Fights where f.Boxer1_ID == boxer.ID || f.Boxer2_ID == boxer.ID select f).ToList();
+                var wins = (from f in db.Fights where f.Winner_ID == boxer.ID select f).ToList();
+                var loses = (from f in db.Fights where (f.Boxer1_ID == boxer.ID || f.Boxer2_ID == boxer.ID) && (f.Winner_ID != boxer.ID && f.Winner_ID != null) select f).ToList();
+                var draws = (from f in db.Fights where (f.Boxer1_ID == boxer.ID || f.Boxer2_ID == boxer.ID) && f.Winner_ID == null select f).ToList();
+                foreach (Fight fight in wins)
+                {
+                    fight.FightResult = "Win";
+                }
+                boxer.Wins = wins.Count;
 
-        public void GetRecord(Boxer boxer)
-        {
-            using (BoxrecContext db = new BoxrecContext(connectionString))
-            {
+                foreach (Fight fight in loses)
+                {
+                    fight.FightResult = "Lose";
+                }
+                boxer.Loses = loses.Count;
 
-                var wins = from f in db.Fights where f.Winner_ID == boxer.ID select f;
-                boxer.Wins = wins.Count();
-                var loses = from f in db.Fights where (f.Boxer1_ID == boxer.ID || f.Boxer2_ID == boxer.ID) && f.Winner_ID != boxer.ID select f;
-                boxer.Loses = loses.Count();
-                var draws = from f in db.Fights where (f.Boxer1_ID == boxer.ID || f.Boxer2_ID == boxer.ID) && f.Winner_ID == null select f;
-                boxer.Draws = draws.Count();
+                foreach (Fight fight in draws)
+                {
+                    fight.FightResult = "Draw";
+                }
+                boxer.Draws = draws.Count;
 
+                for (int i = 0; i < fights.Count; i++)
+                {
+                    fights[i].FightNumber = i + 1;
+                }
+                return fights;
             }
         }
 
@@ -142,14 +152,15 @@ namespace boxrec
                 bitmapImage.EndInit();
                 boxerDetails.imgBoxerPhoto.Source = bitmapImage;
 
-               
                 var fights = FetchFights(boxerToShow);
                 boxerDetails.dgridBoxerFights.ItemsSource = fights;
                 // generate and setup record of boxer
-                GetRecord(boxerToShow);
                 boxerDetails.tbxWins.Text = boxerToShow.Wins.ToString();
                 boxerDetails.tbxDraws.Text = boxerToShow.Draws.ToString();
                 boxerDetails.tbxLoses.Text = boxerToShow.Loses.ToString();
+
+
+
 
 
                 boxerDetails.ShowDialog();
