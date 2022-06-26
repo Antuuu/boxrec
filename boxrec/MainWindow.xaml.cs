@@ -128,8 +128,9 @@ namespace boxrec
                     editBoxer.tbxID.Text = boxerToEdit.ID.ToString();
                     editBoxer.tbxName.Text = boxerToEdit.Name;
                     editBoxer.tbxSurname.Text = boxerToEdit.Surname;
-                    editBoxer.tbxDivision.Text = boxerToEdit.Division_ID.ToString();
+                    editBoxer.cmbDivision.SelectedIndex = boxerToEdit.Division_ID - 1;
                     editBoxer.dpDateOfBirth.SelectedDate = boxerToEdit.DateOfBirth;
+                    editBoxer.tbxPhotoURL.Text = boxerToEdit.Photo_Url;
 
                     editBoxer.ShowDialog();
                 }
@@ -152,7 +153,7 @@ namespace boxrec
                 boxerDetails.tbxID.Text = boxerToShow.ID.ToString();
                 boxerDetails.tbxName.Text = boxerToShow.Name;
                 boxerDetails.tbxSurname.Text = boxerToShow.Surname;
-                boxerDetails.tbxDivision.Text = boxerToShow.Division_ID.ToString();
+                boxerDetails.tbxDivision.Text = boxerToShow.Division;
                 boxerDetails.tbxDateOfBirth.Text = boxerToShow.DateOfBirth?.ToString("dd-MM-yyyy") ?? "N/A";
 
                 var bitmapImage = new BitmapImage();

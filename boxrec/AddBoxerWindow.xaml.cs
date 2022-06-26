@@ -32,8 +32,9 @@ namespace boxrec
                 {
                     Name = tbxName.Text,
                     Surname = tbxSurname.Text,
-                    Division_ID = Int32.Parse(tbxDivision.Text),
+                    Division_ID = cmbDivision.SelectedIndex + 1,
                     DateOfBirth = dpDateOfBirth.SelectedDate,
+                    Photo_Url = tbxPhotoURL.Text,
                 };
 
                     db.Boxers.Add(boxerToAdd);

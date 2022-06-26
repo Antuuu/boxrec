@@ -12,11 +12,18 @@
         <Label Content="Surname:"></Label>
         <TextBox x:Name="tbxSurname" Margin="5 5 5 5"></TextBox>
         <Label Content="Division:"></Label>
-        <TextBox x:Name="tbxDivision" Margin="5 5 5 5"></TextBox>
+        <ComboBox x:Name="cmbDivision" Margin="5 5 5 5" SelectedIndex="0">
+            <ComboBoxItem Tag="div1">Lightweight</ComboBoxItem>
+            <ComboBoxItem Tag="div2">Middleweight</ComboBoxItem>
+            <ComboBoxItem Tag="div3">Super middleweight</ComboBoxItem>
+            <ComboBoxItem Tag="div4">Light heavyweight</ComboBoxItem>
+            <ComboBoxItem Tag="div5">Cruiserweight</ComboBoxItem>
+            <ComboBoxItem Tag="div6">Heavyweight</ComboBoxItem>
+        </ComboBox>
         <Label Content="Date of birth:"></Label>
         <DatePicker x:Name="dpDateOfBirth" Margin="5 5 5 5" SelectedDate="01-01-1990"></DatePicker>
         <Label Content="Image URL:"></Label>
-        <TextBox x:Name="tbxImageURL" Margin="5 5 5 5"></TextBox>
+        <TextBox x:Name="tbxPhotoURL" Margin="5 5 5 5"></TextBox>
         <Grid>
             <Button Click="btnSave_Click" HorizontalAlignment="Left" Width="130" x:Name="btnSave" Content="Save" Margin="20 20 150 150"></Button>
             <Button Click="btnCancel_Click" HorizontalAlignment="Right" Width="130" x:Name="btnCancel" Content="Cancel" Margin="150 20 20 150"></Button>

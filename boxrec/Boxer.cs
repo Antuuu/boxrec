@@ -25,12 +25,11 @@ namespace boxrec
         public int Draws { get; set; }
         public string? Record { get => GetRecord(); }
 
-        // doesnt work
         private string GetDivision()
         {
             using (BoxrecContext db = new BoxrecContext(@"Data Source=localhost;Initial Catalog=boxrec;Integrated Security=True"))
             {
-                string division = (from d in db.Divisions where d.ID == this.Division_ID select d.Name).FirstOrDefault();
+                string? division = (from d in db.Divisions where d.ID == this.Division_ID select d.Name).FirstOrDefault();
                 return division;
 
             }
@@ -38,7 +37,6 @@ namespace boxrec
 
         private string GetRecord()
         {
-
             int w;
             int l;
             int d;
@@ -50,14 +48,11 @@ namespace boxrec
                 var wins = (from f in db.Fights where f.Winner_ID == this.ID select f).ToList();
                 var loses = (from f in db.Fights where (f.Boxer1_ID == this.ID || f.Boxer2_ID == this.ID) && (f.Winner_ID != this.ID && f.Winner_ID != null) select f).ToList();
                 var draws = (from f in db.Fights where (f.Boxer1_ID == this.ID || f.Boxer2_ID == this.ID) && f.Winner_ID == null select f).ToList();
-                w = wins.Count();
-                l = loses.Count();
-                d = loses.Count();
+                w = wins.Count;
+                l = loses.Count;
+                d = loses.Count;
             }
-
             string record = $"{w}-{d}-{l}";
-
-
             return record;
         }
 

@@ -35,8 +35,9 @@ namespace boxrec
                     .First();
                 boxerToEdit.Name = tbxName.Text;
                 boxerToEdit.Surname = tbxSurname.Text;
-                boxerToEdit.Division_ID = Int32.Parse(tbxDivision.Text);
+                boxerToEdit.Division_ID = cmbDivision.SelectedIndex + 1;
                 boxerToEdit.DateOfBirth = dpDateOfBirth.SelectedDate;
+                boxerToEdit.Photo_Url = tbxPhotoURL.Text;
                 db.SaveChanges();
             }
 
