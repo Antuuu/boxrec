@@ -22,7 +22,7 @@
         <DataGrid x:Name="dgridBoxerFights" Grid.Row="2" Margin="0 10 0 0" Grid.ColumnSpan="4" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="No." Binding="{Binding FightNumber}" Width="55"></DataGridTextColumn>
-                <DataGridTextColumn Header="Opponent" Width="250"></DataGridTextColumn>
+                <DataGridTextColumn Header="Opponent" Binding="{Binding Opponent}" Width="250"></DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding DateOfFight, StringFormat=\{0:MM-dd-yyyy\}}" Header="Date" Width="200"></DataGridTextColumn>
                 <DataGridTextColumn Header="Result"  Binding="{Binding FightResult}" Width="*">
                     <DataGridTextColumn.ElementStyle>

@@ -19,6 +19,8 @@ namespace boxrec
         public string? FightResult { get; set; }
         [NotMapped]
         public int? FightNumber { get; set; }
+        [NotMapped]
+        public string? Opponent { get; set; }
 
         public string GetBoxerRecord()
         {

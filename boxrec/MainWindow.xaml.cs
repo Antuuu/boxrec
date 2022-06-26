@@ -74,6 +74,15 @@ namespace boxrec
                 for (int i = 0; i < fights.Count; i++)
                 {
                     fights[i].FightNumber = i + 1;
+                    if (fights[i].Boxer1_ID == boxer.ID){
+                        fights[i].Opponent = (from b in db.Boxers where b.ID == fights[i].Boxer2_ID select b.Name + " " + b.Surname).First().ToString();
+                    }
+                    else
+                    {
+                        fights[i].Opponent = fights[i].Boxer1_ID.ToString();
+                        fights[i].Opponent = (from b in db.Boxers where b.ID == fights[i].Boxer1_ID select b.Name + " " + b.Surname).First().ToString();
+
+                    }
                 }
                 return fights;
             }
