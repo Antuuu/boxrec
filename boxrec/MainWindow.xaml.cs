@@ -81,7 +81,6 @@ namespace boxrec
                     {
                         fights[i].Opponent = fights[i].Boxer1_ID.ToString();
                         fights[i].Opponent = (from b in db.Boxers where b.ID == fights[i].Boxer1_ID select b.Name + " " + b.Surname).First().ToString();
-
                     }
                 }
                 return fights;

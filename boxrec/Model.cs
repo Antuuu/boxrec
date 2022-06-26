@@ -13,6 +13,8 @@ namespace boxrec
 
         public DbSet<Fight> Fights { get; set; }
 
+        public DbSet<Division> Divisions { get; set; }
+
         public string ConnectionString { get; }
 
         public BoxrecContext(string connectionString)
