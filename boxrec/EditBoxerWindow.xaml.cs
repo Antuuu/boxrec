@@ -48,5 +48,27 @@ namespace boxrec
         {
             Close();
         }
+
+        private Boolean TextAllowed(String s)
+        {
+            foreach (Char c in s.ToCharArray())
+            {
+                if (Char.IsLetter(c) || Char.IsControl(c)) continue;
+                else return false;
+            }
+            return true;
+        }
+
+        private void PreviewTextInputHandler(Object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !TextAllowed(e.Text);
+        }
+
+        private void PastingHandler(object sender, DataObjectPastingEventArgs e)
+        {
+            String s = (String)e.DataObject.GetData(typeof(String));
+            if (!TextAllowed(s)) e.CancelCommand();
+        }
+
     }
 }

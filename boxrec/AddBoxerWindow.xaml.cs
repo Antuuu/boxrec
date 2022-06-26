@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -37,8 +38,8 @@ namespace boxrec
                     Photo_Url = tbxPhotoURL.Text,
                 };
 
-                    db.Boxers.Add(boxerToAdd);
-                    db.SaveChanges();
+                db.Boxers.Add(boxerToAdd);
+                db.SaveChanges();
             }
 
             Close();
@@ -49,5 +50,28 @@ namespace boxrec
             Close();
         }
 
+        private Boolean TextAllowed(String s)
+        {
+            foreach (Char c in s.ToCharArray())
+            {
+                if (Char.IsLetter(c) || Char.IsControl(c)) continue;
+                else return false;
+            }
+            return true;
+        }
+
+        private void PreviewTextInputHandler(Object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !TextAllowed(e.Text);
+        }
+
+        private void PastingHandler(object sender, DataObjectPastingEventArgs e)
+        {
+            // more error handling would be needed here - this is asking for trouble!
+            String s = (String)e.DataObject.GetData(typeof(String));
+            if (!TextAllowed(s)) e.CancelCommand();
+        }
     }
 }
+
+

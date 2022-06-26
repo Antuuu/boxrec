@@ -119,11 +119,8 @@ namespace boxrec
             {
                 if (dgridBoxers.SelectedItem != null)
                 {
-
                     Boxer boxerToEdit = (Boxer)dgridBoxers.SelectedItem;
                     EditBoxerWindow editBoxer = new EditBoxerWindow();
-
-                    editBoxer.DataContext = boxerToEdit;
 
                     editBoxer.tbxID.Text = boxerToEdit.ID.ToString();
                     editBoxer.tbxName.Text = boxerToEdit.Name;
@@ -135,7 +132,6 @@ namespace boxrec
                     editBoxer.ShowDialog();
                 }
             }
-
             dgridBoxers.ItemsSource = FetchBoxers();
         }
 
@@ -192,6 +188,8 @@ namespace boxrec
             }
             
         }
+
+
 
 
         private void btnFightsEditor_Click(object sender, RoutedEventArgs e)

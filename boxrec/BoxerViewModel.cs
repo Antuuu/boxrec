@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace boxrec
 {
-    internal class EditBoxerViewModel : ObservableObject, IDataErrorInfo
+    internal class BoxerViewModel : ObservableObject, IDataErrorInfo
     {
 
         public string Error { get { return null; } }

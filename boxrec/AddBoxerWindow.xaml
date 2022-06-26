@@ -8,15 +8,15 @@
         Title="Add boxer" Height="390" Width="320">
 
     <Window.DataContext>
-        <local:AddBoxerViewModel/>
+        <local:BoxerViewModel/>
     </Window.DataContext>
     
     <StackPanel>
         <Label Content="Name:"></Label>
-        <TextBox x:Name="tbxName" Text="{Binding Name, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding ErrorCollection[Name]}" Margin="5 5 5 5"></TextBox>
+        <TextBox PreviewTextInput="PreviewTextInputHandler" DataObject.Pasting="PastingHandler" x:Name="tbxName" Text="{Binding Name, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding ErrorCollection[Name]}" Margin="5 5 5 5"></TextBox>
         
         <Label Content="Surname:"></Label>
-        <TextBox x:Name="tbxSurname" Text="{Binding Surname, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding ErrorCollection[Surname]}"  Margin="5 5 5 5"></TextBox>
+        <TextBox PreviewTextInput="PreviewTextInputHandler" DataObject.Pasting="PastingHandler" x:Name="tbxSurname" Text="{Binding Surname, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding ErrorCollection[Surname]}" Margin="5 5 5 5"></TextBox>
         
         <Label Content="Division:"></Label>
         <ComboBox x:Name="cmbDivision" Margin="5 5 5 5" SelectedIndex="0">
