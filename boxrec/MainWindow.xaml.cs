@@ -157,10 +157,25 @@ namespace boxrec
                 boxerDetails.tbxDateOfBirth.Text = boxerToShow.DateOfBirth?.ToString("dd-MM-yyyy") ?? "N/A";
 
                 var bitmapImage = new BitmapImage();
-                bitmapImage.BeginInit();
-                bitmapImage.UriSource = new Uri(boxerToShow.Photo_Url.ToString());
-                bitmapImage.EndInit();
-                boxerDetails.imgBoxerPhoto.Source = bitmapImage;
+                try
+                {
+                    bitmapImage.BeginInit();
+                    bitmapImage.UriSource = new Uri(boxerToShow.Photo_Url.ToString());
+                    bitmapImage.EndInit();
+                    boxerDetails.imgBoxerPhoto.Source = bitmapImage;
+                }
+                catch (Exception ex)
+                {
+                    if (string.IsNullOrEmpty(boxerToShow.Photo_Url))
+                    {
+                        boxerDetails.lblNoPhotoURL.Visibility = Visibility.Visible;
+                    }
+                    else
+                    {
+                        boxerDetails.lblInvalidPhotoURL.Visibility = Visibility.Visible;
+                    }
+                }
+
 
                 var fights = FetchFights(boxerToShow);
                 boxerDetails.dgridBoxerFights.ItemsSource = fights;

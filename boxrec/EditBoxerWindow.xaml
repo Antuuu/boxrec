@@ -6,16 +6,21 @@
         xmlns:local="clr-namespace:boxrec"
         mc:Ignorable="d"
         Title="Edit boxer" Height="430" Width="320">
+
+    <Window.DataContext>
+        <local:EditBoxerViewModel/>
+    </Window.DataContext>
+
     <StackPanel>
         <Label Content="ID:"></Label>
         <TextBox x:Name="tbxID" Margin="5 5 200 5" IsEnabled="False"></TextBox>
-        
+
         <Label Content="Name:"></Label>
         <TextBox x:Name="tbxName" Margin="5 5 5 5"></TextBox>
-        
+
         <Label Content="Surname:"></Label>
         <TextBox x:Name="tbxSurname" Margin="5 5 5 5"></TextBox>
-        
+
         <Label Content="Division:"></Label>
         <ComboBox x:Name="cmbDivision" Margin="5 5 5 5" SelectedIndex="0">
             <ComboBoxItem Tag="div1">Lightweight</ComboBoxItem>

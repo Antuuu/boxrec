@@ -6,11 +6,18 @@
         xmlns:local="clr-namespace:boxrec"
         mc:Ignorable="d"
         Title="Add boxer" Height="390" Width="320">
+
+    <Window.DataContext>
+        <local:AddBoxerViewModel/>
+    </Window.DataContext>
+    
     <StackPanel>
         <Label Content="Name:"></Label>
-        <TextBox x:Name="tbxName" Margin="5 5 5 5"></TextBox>
+        <TextBox x:Name="tbxName" Text="{Binding Name, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding ErrorCollection[Name]}" Margin="5 5 5 5"></TextBox>
+        
         <Label Content="Surname:"></Label>
-        <TextBox x:Name="tbxSurname" Margin="5 5 5 5"></TextBox>
+        <TextBox x:Name="tbxSurname" Text="{Binding Surname, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding ErrorCollection[Surname]}"  Margin="5 5 5 5"></TextBox>
+        
         <Label Content="Division:"></Label>
         <ComboBox x:Name="cmbDivision" Margin="5 5 5 5" SelectedIndex="0">
             <ComboBoxItem Tag="div1">Lightweight</ComboBoxItem>
@@ -25,7 +32,20 @@
         <Label Content="Image URL:"></Label>
         <TextBox x:Name="tbxPhotoURL" Margin="5 5 5 5"></TextBox>
         <Grid>
-            <Button Click="btnSave_Click" HorizontalAlignment="Left" Width="130" x:Name="btnSave" Content="Save" Margin="20 20 150 150"></Button>
+            <Button Click="btnSave_Click" HorizontalAlignment="Left" Width="130" x:Name="btnSave" Content="Save" Margin="20 20 150 150">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text.Length, ElementName=tbxName, UpdateSourceTrigger=PropertyChanged}" Value="0">
+                                <Setter Property="IsEnabled" Value="False"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Text.Length, ElementName=tbxSurname, UpdateSourceTrigger=PropertyChanged}" Value="0">
+                                <Setter Property="IsEnabled" Value="False"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
             <Button Click="btnCancel_Click" HorizontalAlignment="Right" Width="130" x:Name="btnCancel" Content="Cancel" Margin="150 20 20 150"></Button>
         </Grid>
     </StackPanel>

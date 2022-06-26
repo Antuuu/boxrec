@@ -1,6 +1,9 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.CompilerServices;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +13,8 @@ namespace boxrec
      
     public class Boxer
     {
+
+
         public int ID { get; set; }
         public string? Name { get; set; }
         public string? Surname { get; set; }
@@ -24,6 +29,9 @@ namespace boxrec
         [NotMapped]
         public int Draws { get; set; }
         public string? Record { get => GetRecord(); }
+
+
+
 
         private string GetDivision()
         {

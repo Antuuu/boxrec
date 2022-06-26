@@ -44,6 +44,7 @@
                 </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
+        
         <StackPanel Grid.Column="1" Grid.Row="0">
             <Label Content="ID:"></Label>
             <TextBox x:Name="tbxID" IsEnabled="False"></TextBox>
@@ -70,11 +71,18 @@
 
             <Label Content="Wins:"></Label>
             <TextBox x:Name="tbxWins" IsEnabled="False" Background="#FF69C441"></TextBox>
+            
             <Label Content="Draws:"></Label>
             <TextBox x:Name="tbxDraws" IsEnabled="False" Background="#FF9B8D8D"></TextBox>
+            
             <Label Content="Loses:"></Label>
             <TextBox x:Name="tbxLoses" IsEnabled="False" Background="#FFDA1010"></TextBox>            
 
+            
+            
         </StackPanel>
+
+        <Label x:Name="lblInvalidPhotoURL" Content="Invalid photo URL" Visibility="Hidden" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+        <Label x:Name="lblNoPhotoURL" Content="No photo URL" Visibility="Hidden" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
     </Grid>
 </Window>
