@@ -28,21 +28,12 @@ namespace boxrec
         // doesnt work
         private string GetDivision()
         {
-            string div;
             using (BoxrecContext db = new BoxrecContext(@"Data Source=localhost;Initial Catalog=boxrec;Integrated Security=True"))
             {
-                List<Division> divs = new List<Division>();
-
-                divs = (from d in db.Divisions select d).ToList();
-                var divis = from d in divs
-                      where d.ID == this.Division_ID
-                      select d.Name.ToString();
-
-                div = divis.ToString();
+                string division = (from d in db.Divisions where d.ID == this.Division_ID select d.Name).FirstOrDefault();
+                return division;
 
             }
-            
-            return div;
         }
 
         private string GetRecord()
