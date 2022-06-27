@@ -51,7 +51,7 @@ namespace boxrec
                 List<Fight> fights = new List<Fight>();
                 fights = (from f in db.Fights where f.Boxer1_ID == boxer.ID || f.Boxer2_ID == boxer.ID select f).ToList();
                 var wins = (from f in db.Fights where f.Winner_ID == boxer.ID select f).ToList();
-                var loses = (from f in db.Fights where (f.Boxer1_ID == boxer.ID || f.Boxer2_ID == boxer.ID) && (f.Winner_ID != boxer.ID && f.Winner_ID != null) select f).ToList();
+                var losses = (from f in db.Fights where (f.Boxer1_ID == boxer.ID || f.Boxer2_ID == boxer.ID) && (f.Winner_ID != boxer.ID && f.Winner_ID != null) select f).ToList();
                 var draws = (from f in db.Fights where (f.Boxer1_ID == boxer.ID || f.Boxer2_ID == boxer.ID) && f.Winner_ID == null select f).ToList();
                 foreach (Fight fight in wins)
                 {
@@ -59,11 +59,11 @@ namespace boxrec
                 }
                 boxer.Wins = wins.Count;
 
-                foreach (Fight fight in loses)
+                foreach (Fight fight in losses)
                 {
-                    fight.FightResult = "Lose";
+                    fight.FightResult = "Loss";
                 }
-                boxer.Loses = loses.Count;
+                boxer.Loses = losses.Count;
 
                 foreach (Fight fight in draws)
                 {
@@ -175,10 +175,11 @@ namespace boxrec
 
                 var fights = FetchFights(boxerToShow);
                 boxerDetails.dgridBoxerFights.ItemsSource = fights;
+
                 // generate and setup record of boxer
                 boxerDetails.tbxWins.Text = boxerToShow.Wins.ToString();
                 boxerDetails.tbxDraws.Text = boxerToShow.Draws.ToString();
-                boxerDetails.tbxLoses.Text = boxerToShow.Loses.ToString();
+                boxerDetails.tbxLosses.Text = boxerToShow.Loses.ToString();
 
 
 
