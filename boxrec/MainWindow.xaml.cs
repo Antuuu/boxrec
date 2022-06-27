@@ -27,13 +27,17 @@ namespace boxrec
         public static string connectionString = @"Data Source=localhost;Initial Catalog=boxrec;Integrated Security=True";
 
 
-
         public MainWindow()
         {
             InitializeComponent();
             dgridBoxers.ItemsSource = FetchBoxers();
         }
 
+        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                this.DragMove();
+        }
 
         public static List<Boxer> FetchBoxers()
         {
@@ -88,6 +92,10 @@ namespace boxrec
             }
         }
 
+        private void Image_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
 
 
         private void btnAddBoxer_Click(object sender, RoutedEventArgs e)

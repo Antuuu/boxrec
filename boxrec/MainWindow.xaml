@@ -5,19 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:boxrec"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        WindowStartupLocation="CenterScreen" 
+        WindowStyle="None"
+        AllowsTransparency="True" 
+        Background="Transparent" 
+        Title="MainWindow" Height="600" Width="1000">
     <Grid>
+        <Image Source="/img/close.png" Grid.Column="4" Panel.ZIndex="1" MouseUp="Image_MouseUp" Style="{StaticResource imgClose}"/>
+
+    <Border CornerRadius="10 10 10 10" MouseDown="Border_MouseDown">
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#ffffff" Offset="0" />
+                <GradientStop Color="#ffffff" Offset="1" />
+            </LinearGradientBrush>
+        </Border.Background>
+        <Grid>
+            
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <DataGrid x:Name="dgridBoxers" Grid.ColumnSpan="4" Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="45"/>
+                <RowDefinition Height="105"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Border Grid.Row="2" Grid.ColumnSpan="4" CornerRadius="0 0 10 10">
+                <DataGrid Margin="25" x:Name="dgridBoxers" Grid.ColumnSpan="4" Grid.Row="3" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding ID}" Header="ID" Width="50" />
                 <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="200" />
@@ -34,10 +51,12 @@
                 </ContextMenu>
             </DataGrid.ContextMenu>
         </DataGrid>
-
-        <Button x:Name="btnAddBoxer" Content="Add boxer" Grid.Column="0" Margin ="30 30 30 30" Click="btnAddBoxer_Click"/>
-        <Button x:Name="btnEditBoxer" Content="Edit boxer" Grid.Column="1" Margin ="30 30 30 30" Click="btnEditBoxer_Click"/>
-        <Button x:Name="btnRemoveBoxer" Content="Remove boxer" Grid.Column="2" Margin="30 30 30 30" Click="btnRemoveBoxer_Click"/>
-        <Button x:Name="btnFightsEditor" Content="Fights editor" Grid.Column="3" Margin="30 30 30 30" Click="btnFightsEditor_Click"/>
+            </Border>
+            <Button VerticalAlignment="Top" Grid.Row="1" x:Name="btnAddBoxer" Height="60" Content="Add boxer" Grid.Column="0" Click="btnAddBoxer_Click" Style="{StaticResource mainButton}" />
+            <Button VerticalAlignment="Top" Grid.Row="1" x:Name="btnEditBoxer" Height="60" Content="Edit boxer" Grid.Column="1" Click="btnEditBoxer_Click" Style="{StaticResource mainButton}" />
+            <Button VerticalAlignment="Top" Grid.Row="1" x:Name="btnRemoveBoxer" Height="60" Content="Remove boxer" Grid.Column="2" Click="btnRemoveBoxer_Click" Style="{StaticResource mainButton}" />
+            <Button VerticalAlignment="Top" Grid.Row="1" x:Name="btnFightsEditor" Height="60" Content="Fights editor" Grid.Column="3" Click="btnFightsEditor_Click" Style="{StaticResource mainButton}"/>
+    </Grid>
+    </Border>
     </Grid>
 </Window>
