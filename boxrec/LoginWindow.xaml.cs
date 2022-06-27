@@ -38,7 +38,7 @@ namespace boxrec
 
                 sqlCmd.CommandType = System.Data.CommandType.Text;
                 sqlCmd.Parameters.AddWithValue("@Username", tbxUsername.Text);
-                sqlCmd.Parameters.AddWithValue("@Password", tbxPassword.Password);
+                sqlCmd.Parameters.AddWithValue("@Password", pbxPassword.Password);
                 int count = Convert.ToInt32(sqlCmd.ExecuteScalar());
 
                 if (count == 1)
@@ -55,6 +55,51 @@ namespace boxrec
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                this.DragMove();
+        }
+
+        private void Image_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void txtUsername_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            tbxUsername.Focus();
+        }
+
+        private void tbxUsername_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(tbxUsername.Text) && tbxUsername.Text.Length > 0)
+            {
+                txtUsername.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                txtUsername.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void txtPassword_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            pbxPassword.Focus();
+        }
+
+        private void pbxPassword_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(pbxPassword.Password) && pbxPassword.Password.Length > 0)
+            {
+                txtPassword.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                txtPassword.Visibility = Visibility.Visible;
             }
         }
 
