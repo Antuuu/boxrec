@@ -44,10 +44,12 @@ namespace boxrec
 
         private void btnEditFight_Click(object sender, RoutedEventArgs e)
         {
-            using (BoxrecContext db = new BoxrecContext(@"Data Source=localhost;Initial Catalog=boxrec;Integrated Security=True"))
+            if (dgridFights.SelectedItem != null)
             {
-                if (dgridFights.SelectedItem != null)
+                using (BoxrecContext db = new BoxrecContext(@"Data Source=localhost;Initial Catalog=boxrec;Integrated Security=True"))
                 {
+
+
                     EditFightWindow editFight = new EditFightWindow();
                     Fight fightToEdit = (Fight)dgridFights.SelectedItem;
 
@@ -72,13 +74,23 @@ namespace boxrec
                     editFight.ShowDialog();
 
                     dgridFights.ItemsSource = FetchFights();
+
                 }
             }
         }
 
         private void btnRemoveFight_Click(object sender, RoutedEventArgs e)
         {
-
+            if (dgridFights.SelectedItem != null)
+            {
+                using (BoxrecContext db = new BoxrecContext(@"Data Source=localhost;Initial Catalog=boxrec;Integrated Security=True"))
+                {
+                    Fight fightToRemove = (Fight)dgridFights.SelectedItem;
+                    db.Remove(fightToRemove);
+                    db.SaveChanges();
+                    dgridFights.ItemsSource = FetchFights();
+                }
+            }
         }
     }
 }
