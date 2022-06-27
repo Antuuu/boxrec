@@ -27,24 +27,48 @@ namespace boxrec
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            Boxer selected = (Boxer)dgridBoxer2.SelectedItem;
+            
             if (dgridBoxer2.SelectedItem != null)
             {
-                foreach (AddFightWindow window in Application.Current.Windows.OfType<AddFightWindow>())
+                Boxer selected = (Boxer)dgridBoxer2.SelectedItem;
+                if (Application.Current.Windows.OfType<AddFightWindow>().Any())
                 {
-                    int otherID = 0;
-                    if (!String.IsNullOrEmpty(window.tbxID1.Text))
-                        otherID = Int32.Parse(window.tbxID1.Text);
+                    foreach (AddFightWindow window in Application.Current.Windows.OfType<AddFightWindow>())
+                    {
+                        int otherID = 0;
+                        if (!String.IsNullOrEmpty(window.tbxID1.Text))
+                            otherID = Int32.Parse(window.tbxID1.Text);
 
-                    if (selected.ID != otherID)
-                    {
-                        window.boxer2 = (Boxer)dgridBoxer2.SelectedItem;
-                        window.UpdateBoxer2();
-                        this.Close();
+                        if (selected.ID != otherID)
+                        {
+                            window.boxer2 = (Boxer)dgridBoxer2.SelectedItem;
+                            window.UpdateBoxer2();
+                            this.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("You must select two different boxers!");
+                        }
                     }
-                    else
+                }
+                else if (Application.Current.Windows.OfType<EditFightWindow>().Any())
+                {
+                    foreach (EditFightWindow window in Application.Current.Windows.OfType<EditFightWindow>())
                     {
-                        MessageBox.Show("You must select two different boxers!");
+                        int otherID = 0;
+                        if (!String.IsNullOrEmpty(window.tbxID1.Text))
+                            otherID = Int32.Parse(window.tbxID1.Text);
+
+                        if (selected.ID != otherID)
+                        {
+                            window.boxer2 = (Boxer)dgridBoxer2.SelectedItem;
+                            window.UpdateBoxer2();
+                            this.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("You must select two different boxers!");
+                        }
                     }
                 }
             }
