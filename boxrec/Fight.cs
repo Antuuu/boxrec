@@ -10,7 +10,7 @@ namespace boxrec
     public class Fight
     {
         public int ID { get; set; }
-        public DateTime DateOfFight{ get; set; }
+        public DateTime? DateOfFight{ get; set; }
         public int? Belt_ID { get; set; }
         public int Boxer1_ID { get; set; }
         public int Boxer2_ID { get; set; }
