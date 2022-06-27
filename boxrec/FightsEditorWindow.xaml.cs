@@ -22,6 +22,16 @@ namespace boxrec
         public FightsEditorWindow()
         {
             InitializeComponent();
+            dgridFights.ItemsSource = FetchFights();
+        }
+
+        public static List<Fight> FetchFights()
+        {
+            using (BoxrecContext db = new BoxrecContext(MainWindow.connectionString))
+            {
+                List<Fight> fights = new List<Fight>();
+                return fights = db.Fights.ToList();
+            }
         }
 
 
@@ -29,6 +39,7 @@ namespace boxrec
         {
             AddFightWindow addFight = new AddFightWindow();
             addFight.ShowDialog();
+            dgridFights.ItemsSource = FetchFights();
         }
 
         private void btnEditFight_Click(object sender, RoutedEventArgs e)

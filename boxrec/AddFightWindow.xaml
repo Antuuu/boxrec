@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:boxrec"
         mc:Ignorable="d"
-        Title="Add fight" Height="480" Width="640">
+        Title="Add fight" Height="500" Width="640">
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -14,7 +14,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="50"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="140"></RowDefinition>
+            <RowDefinition Height="130"></RowDefinition>
         </Grid.RowDefinitions>
         <Button x:Name="btnSelectBoxer1" Click="btnSelectBoxer1_Click" Grid.Row="0" Grid.Column="0" Content="Select boxer 1" Height="30" Width="150"></Button>
         <Button x:Name="btnSelectBoxer2" Click="btnSelectBoxer2_Click" Grid.Row="0" Grid.Column="1" Content="Select boxer 2" Height="30" Width="150"></Button>

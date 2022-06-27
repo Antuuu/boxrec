@@ -74,7 +74,7 @@ namespace boxrec
                 db.Fights.Add(fightToAdd);
                 db.SaveChanges();
             }
-
+            
             Close();
         }
 
