@@ -15,30 +15,25 @@ using System.Windows.Shapes;
 namespace boxrec
 {
     /// <summary>
-    /// Interaction logic for FightsEditorWindow.xaml
+    /// Interaction logic for AddFightWindow.xaml
     /// </summary>
-    public partial class FightsEditorWindow : Window
+    public partial class AddFightWindow : Window
     {
-        public FightsEditorWindow()
+        public AddFightWindow()
         {
             InitializeComponent();
         }
+        
 
-
-        private void btnAddFight_Click(object sender, RoutedEventArgs e)
+        private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            AddFightWindow addFight = new AddFightWindow();
-            addFight.ShowDialog();
+            Close();
         }
 
-        private void btnEditFight_Click(object sender, RoutedEventArgs e)
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void btnRemoveFight_Click(object sender, RoutedEventArgs e)
-        {
-
+            Close();
         }
     }
 }
