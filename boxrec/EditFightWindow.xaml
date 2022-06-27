@@ -1,0 +1,85 @@
+﻿<Window x:Class="boxrec.EditFightWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:boxrec"
+        mc:Ignorable="d"
+        Title="Edit fight" Height="500" Width="640">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="130"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Button x:Name="btnSelectBoxer1" Click="btnSelectBoxer1_Click" Grid.Row="0" Grid.Column="0" Content="Select boxer 1" Height="30" Width="150"></Button>
+        <Button x:Name="btnSelectBoxer2" Click="btnSelectBoxer2_Click" Grid.Row="0" Grid.Column="1" Content="Select boxer 2" Height="30" Width="150"></Button>
+        
+        <StackPanel Grid.Column="0" Grid.Row="1" Margin="10">
+            <Label Content="ID:"></Label>
+            <TextBox x:Name="tbxID1" IsEnabled="False"></TextBox>
+
+            <Label Content="Name:"></Label>
+            <TextBox x:Name="tbxName1" IsEnabled="False"></TextBox>
+
+            <Label Content="Surname:"></Label>
+            <TextBox x:Name="tbxSurname1" IsEnabled="False"></TextBox>
+
+            <Label Content="Division:"></Label>
+            <TextBox x:Name="tbxDivision1" IsEnabled="False"></TextBox>
+
+            <Label Content="Date of birth:"></Label>
+            <TextBox x:Name="tbxDateOfBirth1" IsEnabled="False"></TextBox>
+
+        </StackPanel>
+
+        <StackPanel Margin="10" Grid.Column="1" Grid.Row="1">
+            <Label Content="ID:"></Label>
+            <TextBox x:Name="tbxID2" IsEnabled="False"></TextBox>
+
+            <Label Content="Name:"></Label>
+            <TextBox x:Name="tbxName2" IsEnabled="False"></TextBox>
+
+            <Label Content="Surname:"></Label>
+            <TextBox x:Name="tbxSurname2" IsEnabled="False"></TextBox>
+
+            <Label Content="Division:"></Label>
+            <TextBox x:Name="tbxDivision2" IsEnabled="False"></TextBox>
+
+            <Label Content="Date of birth:"></Label>
+            <TextBox x:Name="tbxDateOfBirth2" IsEnabled="False"></TextBox>
+
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column="0">
+                <Label Content="Select winner:"></Label>
+                <RadioButton x:Name="rbtnBoxer1" Content="Boxer 1" GroupName="Winner" IsChecked="True"></RadioButton>
+                <RadioButton x:Name="rbtnBoxer2" Content="Boxer 2" GroupName="Winner"></RadioButton>
+                <RadioButton x:Name="rbtnDraw" Content="Draw" GroupName="Winner"></RadioButton>
+            </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="1">
+            <Label Content="Select date of fight:"></Label>
+            <DatePicker x:Name="dpDateOfFight" SelectedDate="01-01-1990"></DatePicker>
+
+        </StackPanel>
+        <Button x:Name="btnSave" Click="btnSave_Click" Grid.Row="2" Grid.Column="0" VerticalAlignment="Bottom" Margin="10" Height="30" Width="150" Content="Save">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text.Length, ElementName=tbxID1, UpdateSourceTrigger=PropertyChanged}" Value="0">
+                            <Setter Property="IsEnabled" Value="False"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Text.Length, ElementName=tbxID2, UpdateSourceTrigger=PropertyChanged}" Value="0">
+                            <Setter Property="IsEnabled" Value="False"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="btnCancel" Click="btnCancel_Click" Grid.Row="2" Grid.Column="1" VerticalAlignment="Bottom" Margin="10" Height="30" Width="150" Content="Cancel"></Button>
+    </Grid>
+</Window>

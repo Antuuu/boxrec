@@ -44,7 +44,34 @@ namespace boxrec
 
         private void btnEditFight_Click(object sender, RoutedEventArgs e)
         {
+            using (BoxrecContext db = new BoxrecContext(@"Data Source=localhost;Initial Catalog=boxrec;Integrated Security=True"))
+            {
+                EditFightWindow editFight = new EditFightWindow();
 
+                Fight fightToEdit = (Fight)dgridFights.SelectedItem;
+
+                Boxer boxer1 = (from b in db.Boxers where b.ID == fightToEdit.Boxer1_ID select b).FirstOrDefault();
+                Boxer boxer2 = (from b in db.Boxers where b.ID == fightToEdit.Boxer1_ID select b).FirstOrDefault();
+
+                editFight.tbxID1.Text = fightToEdit.Boxer1_ID.ToString();
+                editFight.tbxID2.Text = fightToEdit.Boxer2_ID.ToString();
+
+                editFight.tbxName1.Text = boxer1.Name;
+                editFight.tbxName2.Text = boxer2.Name;
+
+                editFight.tbxSurname1.Text = boxer1.Surname;
+                editFight.tbxSurname2.Text = boxer2.Surname;
+
+                editFight.tbxDivision1.Text = boxer1.Division;
+                editFight.tbxDivision2.Text = boxer2.Division;
+
+                editFight.tbxDateOfBirth1.Text = boxer1.DateOfBirth.ToString();
+                editFight.tbxDateOfBirth2.Text = boxer2.DateOfBirth.ToString();
+
+                editFight.ShowDialog();
+
+                dgridFights.ItemsSource = FetchFights();
+            }
         }
 
         private void btnRemoveFight_Click(object sender, RoutedEventArgs e)

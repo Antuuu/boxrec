@@ -14,12 +14,19 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="EditFightWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="SelectBoxer2Window.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
+    <Page Update="EditFightWindow.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="SelectBoxer2Window.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
