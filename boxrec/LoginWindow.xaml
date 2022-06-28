@@ -37,8 +37,8 @@
                 </Canvas>
 
                 <StackPanel VerticalAlignment="Center">
-                    <TextBlock Text="BoxRec" Style="{StaticResource TitleText}" />
-                    <TextBlock Text="Fighters database management system" Opacity="0.8" Margin="20 30 20 30" Style="{StaticResource NormalText}" />
+                    <TextBlock Foreground="#FFFFFF" Text="BoxRec" Style="{StaticResource TitleText}" />
+                    <TextBlock Foreground="#FFFFFF" Text="Fighters database management system" Opacity="0.8" Margin="20 30 20 30" Style="{StaticResource NormalText}" />
                 </StackPanel>
             </Grid>
         </Border>
