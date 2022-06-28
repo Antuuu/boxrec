@@ -21,7 +21,23 @@ namespace boxrec
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    /// 
+    ///
+    
+    //TO DO list
+    //Db:
+    //1.) Klucze obce na bazie(boxers + divisions)
+    //2.) uzupełnienie bazy
+    //Dokumentacja:
+    //1.) Dokumentacja xml publicznych składników kodu.
+    //2.) Readme.md
+    //Kod:
+    //1.) Zakres dat w datepickerach
+    //2.) Zmiana możliwych metod class etc na private
+    //3.) Sprawdzenie properties class
+    //4.) Zabezpiecznie operacji bazodanowych - np.usunięcie Boxera mającego walki
+    //5.) Unit tests
+    //6.) Instalator
+
     public partial class MainWindow : Window
     {
         public static string connectionString = @"Data Source=localhost;Initial Catalog=boxrec;Integrated Security=True";
