@@ -47,7 +47,7 @@ namespace boxrec
             }
         }
 
-        private string Name
+        public string Name
         {
             get { return _name; }
             set
@@ -56,7 +56,7 @@ namespace boxrec
             }
         }
 
-        private string Surname
+        public string Surname
         {
             get { return _surname; }
             set
