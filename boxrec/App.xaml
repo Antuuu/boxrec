@@ -46,9 +46,18 @@
             <Setter Property="FontSize" Value="16" />
             <Setter Property="LineHeight" Value="28" />
             <Setter Property="TextWrapping" Value="Wrap" />
-            <Setter Property="TextAlignment" Value="Center" />
+            <Setter Property="TextAlignment" Value="Left" />
             <Setter Property="Foreground" Value="#878787" />
-        </Style> 
+        </Style>
+
+        <Style x:Key="RadioButton" TargetType="RadioButton">
+            <Setter Property="TextBlock.TextWrapping" Value="Wrap"/>
+            <Setter Property="TextBlock.VerticalAlignment" Value="Center"/>
+            <Setter Property="TextBlock.FontSize" Value="16" />
+            <Setter Property="TextBlock.Foreground" Value="#878787" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+        </Style>
+
 
         <Style x:Key="textHint" TargetType="TextBlock">
             <Setter Property="FontSize" Value="14" />
@@ -73,7 +82,7 @@
 
         <Style x:Key="mainButton" TargetType="{x:Type Button}">
             <Setter Property="FontSize" Value="14" />
-            <Setter Property="Margin" Value="0 20 0 0" />
+            <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="Width" Value="200" />
             <Setter Property="Background" Value="Orange" />
             <Setter Property="Foreground" Value="#FDFEFE" />
@@ -105,7 +114,7 @@
 
         <Style x:Key="saveButton" TargetType="{x:Type Button}">
             <Setter Property="FontSize" Value="14" />
-            <Setter Property="Margin" Value="0 20 0 0" />
+            <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="Width" Value="200" />
             <Setter Property="Background" Value="Orange" />
             <Setter Property="Foreground" Value="#FDFEFE" />
@@ -136,6 +145,44 @@
                     <Setter Property="IsEnabled" Value="False"/>
                 </DataTrigger>
                 <DataTrigger Binding="{Binding Text.Length, ElementName=tbxSurname, UpdateSourceTrigger=PropertyChanged}" Value="0">
+                    <Setter Property="IsEnabled" Value="False"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="saveFightButton" TargetType="{x:Type Button}">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Width" Value="200" />
+            <Setter Property="Background" Value="Orange" />
+            <Setter Property="Foreground" Value="#FDFEFE" />
+            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="25" BorderBrush="Orange" Padding="15" BorderThickness="1">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FFFFCA6A" />
+                    <Setter Property="Foreground" Value="White" />
+                </Trigger>
+                <Trigger Property="IsMouseCaptured" Value="True">
+                    <Setter Property="Background" Value="#FFFFCA6A" />
+                    <Setter Property="Foreground" Value="White" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="#FFFFD278" />
+                    <Setter Property="Foreground" Value="#FFFFFF" />
+                </Trigger>
+                <DataTrigger Binding="{Binding Text.Length, ElementName=tbxID1, UpdateSourceTrigger=PropertyChanged}" Value="0">
+                    <Setter Property="IsEnabled" Value="False"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Text.Length, ElementName=tbxID2, UpdateSourceTrigger=PropertyChanged}" Value="0">
                     <Setter Property="IsEnabled" Value="False"/>
                 </DataTrigger>
             </Style.Triggers>

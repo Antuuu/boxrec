@@ -11,7 +11,6 @@ namespace boxrec
     {
         public int ID { get; set; }
         public DateTime? DateOfFight{ get; set; }
-        public int? Belt_ID { get; set; }
         public int Boxer1_ID { get; set; }
         public string Boxer1 { get => GetBoxer1(); }
         public int Boxer2_ID { get; set; }

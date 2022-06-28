@@ -8,7 +8,7 @@
         AllowsTransparency="True" 
         Background="Transparent" 
         mc:Ignorable="d"
-        Title="Edit boxer" Height="585" Width="400">
+        Title="Edit boxer" Height="565" Width="400">
 
     <Window.DataContext>
         <local:BoxerViewModel/>
@@ -49,9 +49,9 @@
                 <TextBox Margin="5" x:Name="tbxPhotoURL" BorderBrush="Transparent" Style="{StaticResource textBox}"></TextBox>
             </Border>
             <Grid>
-                <Button Click="btnSave_Click" HorizontalAlignment="Left" Height="55" Width="160" x:Name="btnSave" Content="Save" Style="{StaticResource saveButton}">
+                <Button Margin="0 25 0 0" Click="btnSave_Click" HorizontalAlignment="Left" Height="55" Width="160" x:Name="btnSave" Content="Save" Style="{StaticResource saveButton}">
                 </Button>
-                <Button Click="btnCancel_Click" HorizontalAlignment="Right" Height="55" Width="160" x:Name="btnCancel" Content="Cancel" Style="{StaticResource mainButton}"></Button>
+                <Button Margin="0 25 0 0" Click="btnCancel_Click" HorizontalAlignment="Right" Height="55" Width="160" x:Name="btnCancel" Content="Cancel" Style="{StaticResource mainButton}"></Button>
             </Grid>
         </StackPanel>
     </Border>

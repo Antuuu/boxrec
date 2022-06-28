@@ -4,36 +4,45 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:boxrec"
+        WindowStyle="None"
+        AllowsTransparency="True" 
+        Background="Transparent" 
         mc:Ignorable="d"
-        Title="FightsEditorWindow" Height="450" Width="800">
+        Title="FightsEditorWindow" Height="500" Width="900">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <DataGrid x:Name="dgridFights" Grid.ColumnSpan="4" Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True">
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding ID}" Header="ID" Width="50" />
-                <DataGridTextColumn Binding="{Binding Boxer1}" Header="Boxer 1" Width="200" />
-                <DataGridTextColumn Binding="{Binding Boxer2}" Header="Boxer 2" Width="200" />
-                <DataGridTextColumn Binding="{Binding DateOfFight, StringFormat=\{0:dd-MM-yyyy\}}" Header="Date" Width="100" />
-                <DataGridTextColumn Binding="{Binding Winner}" Header="Winner" Width="*" />
-            </DataGrid.Columns>
-            <DataGrid.ContextMenu>
-                <ContextMenu>
-                    <MenuItem Header="Edit" Click="btnEditFight_Click"></MenuItem>
-                    <MenuItem Header="Delete" Click="btnRemoveFight_Click"></MenuItem>
-                </ContextMenu>
-            </DataGrid.ContextMenu>
-        </DataGrid>
+        <Image Source="/img/close.png" Grid.Column="4" Panel.ZIndex="1" MouseUp="Image_MouseUp" Style="{StaticResource imgClose}"/>
+        <Border Background="#FFFFFF" CornerRadius="10 10 10 10" MouseDown="Window_MouseDown">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                    <RowDefinition Height="85"/>
+                    <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <DataGrid Margin="20" x:Name="dgridFights" Grid.ColumnSpan="4" Grid.Row="2" AutoGenerateColumns="False" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding ID}" Header="ID" Width="50" />
+                    <DataGridTextColumn Binding="{Binding Boxer1}" Header="Boxer 1" Width="200" />
+                    <DataGridTextColumn Binding="{Binding Boxer2}" Header="Boxer 2" Width="200" />
+                    <DataGridTextColumn Binding="{Binding DateOfFight, StringFormat=\{0:dd-MM-yyyy\}}" Header="Date" Width="100" />
+                    <DataGridTextColumn Binding="{Binding Winner}" Header="Winner" Width="*" />
+                </DataGrid.Columns>
+                <DataGrid.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Edit" Click="btnEditFight_Click"></MenuItem>
+                        <MenuItem Header="Delete" Click="btnRemoveFight_Click"></MenuItem>
+                    </ContextMenu>
+                </DataGrid.ContextMenu>
+            </DataGrid>
 
-        <Button x:Name="btnAddFight" Content="Add fight" Grid.Column="0" Margin="30 30 30 30" Click="btnAddFight_Click"/>
-        <Button x:Name="btnEditFight" Content="Edit fight" Grid.Column="1" Margin ="30 30 30 30" Click="btnEditFight_Click"/>
-        <Button x:Name="btnRemoveFight" Content="Remove fight" Grid.Column="2" Margin="30 30 30 30" Click="btnRemoveFight_Click"/>
+            <Button Grid.Row="1" x:Name="btnAddFight" Content="Add fight" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnAddFight_Click" Style="{StaticResource mainButton}"/>
+            <Button Grid.Row="1" x:Name="btnEditFight" Content="Edit fight" Grid.Column="1" Click="btnEditFight_Click" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource mainButton}"/>
+            <Button Grid.Row="1" x:Name="btnRemoveFight" Content="Remove fight" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnRemoveFight_Click" Style="{StaticResource mainButton}"/>
+        </Grid>
+    </Border>
     </Grid>
 </Window>

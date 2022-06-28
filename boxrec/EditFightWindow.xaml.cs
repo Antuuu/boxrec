@@ -51,16 +51,20 @@ namespace boxrec
             InitializeComponent();
         }
         
-        // TODO
-        // fix select boxer windows change only AddBoxer window
-        // radio button default select
+
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
 
             using (BoxrecContext db = new BoxrecContext(MainWindow.connectionString))
             {
+                int idToEdit = Int32.Parse(tbxFightID.Text);
+
+                Fight fight = db.Fights
+                              .Where(f => f.ID == idToEdit)
+                              .First();
 
                 int winnerID;
+
                 if (rbtnBoxer1.IsChecked == true)
                 {
                     winnerID = boxer1.ID;
@@ -71,15 +75,13 @@ namespace boxrec
                 }
                 else winnerID = 0;
 
-                Fight fightToAdd = new Fight
-                {
-                    Boxer1_ID = boxer1.ID,
-                    Boxer2_ID = boxer2.ID,
-                    Winner_ID = winnerID,
-                    DateOfFight = dpDateOfFight.SelectedDate,
-                };
+                fight.Boxer1_ID = boxer1.ID;
+                fight.Boxer2_ID = boxer2.ID;
+                fight.Winner_ID = winnerID;
+                fight.DateOfFight = dpDateOfFight.SelectedDate;
 
-                db.Fights.Add(fightToAdd);
+
+
                 db.SaveChanges();
             }
             

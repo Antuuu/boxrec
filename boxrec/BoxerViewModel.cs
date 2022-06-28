@@ -13,8 +13,8 @@ namespace boxrec
 
         public string Error { get { return null; } }
 
-        private string _name;
-        private string _surname;
+        private string? _name;
+        private string? _surname;
 
         public Dictionary<string, string> ErrorCollection { get; private set; } = new Dictionary<string, string>();
 

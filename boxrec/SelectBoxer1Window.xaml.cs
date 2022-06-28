@@ -22,15 +22,21 @@ namespace boxrec
         public SelectBoxer1Window()
         {
             InitializeComponent();
-            dgridBoxer1.ItemsSource = MainWindow.FetchBoxers();
+            dgridBoxer.ItemsSource = MainWindow.FetchBoxers();
+        }
+
+        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                this.DragMove();
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
 
-            if (dgridBoxer1.SelectedItem != null)
+            if (dgridBoxer.SelectedItem != null)
             {
-                Boxer selected = (Boxer)dgridBoxer1.SelectedItem;
+                Boxer selected = (Boxer)dgridBoxer.SelectedItem;
                 if (Application.Current.Windows.OfType<AddFightWindow>().Any())
                 {
                     foreach (AddFightWindow window in Application.Current.Windows.OfType<AddFightWindow>())
@@ -41,7 +47,7 @@ namespace boxrec
 
                         if (selected.ID != otherID)
                         {
-                            window.boxer1 = (Boxer)dgridBoxer1.SelectedItem;
+                            window.boxer1 = (Boxer)dgridBoxer.SelectedItem;
                             window.UpdateBoxer1();
                             this.Close();
                         }
@@ -61,7 +67,7 @@ namespace boxrec
 
                         if (selected.ID != otherID)
                         {
-                            window.boxer1 = (Boxer)dgridBoxer1.SelectedItem;
+                            window.boxer1 = (Boxer)dgridBoxer.SelectedItem;
                             window.UpdateBoxer1();
                             this.Close();
                         }

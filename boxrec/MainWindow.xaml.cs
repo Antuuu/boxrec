@@ -155,8 +155,7 @@ namespace boxrec
                 boxerDetails.DataContext = boxerToShow;
 
                 boxerDetails.tbxID.Text = boxerToShow.ID.ToString();
-                boxerDetails.tbxName.Text = boxerToShow.Name;
-                boxerDetails.tbxSurname.Text = boxerToShow.Surname;
+                boxerDetails.txtFullName.Text = $"{boxerToShow.Name} {boxerToShow.Surname}";
                 boxerDetails.tbxDivision.Text = boxerToShow.Division;
                 boxerDetails.tbxDateOfBirth.Text = boxerToShow.DateOfBirth?.ToString("dd-MM-yyyy") ?? "N/A";
 
@@ -172,11 +171,11 @@ namespace boxrec
                 {
                     if (string.IsNullOrEmpty(boxerToShow.Photo_Url))
                     {
-                        boxerDetails.lblNoPhotoURL.Visibility = Visibility.Visible;
+                        boxerDetails.txtNoPhotoURL.Visibility = Visibility.Visible;
                     }
                     else
                     {
-                        boxerDetails.lblInvalidPhotoURL.Visibility = Visibility.Visible;
+                        boxerDetails.txtInvalidPhotoURL.Visibility = Visibility.Visible;
                     }
                 }
 

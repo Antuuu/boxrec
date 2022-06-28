@@ -4,85 +4,95 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:boxrec"
+        WindowStyle="None"
+        AllowsTransparency="True" 
+        Background="Transparent" 
         mc:Ignorable="d"
-        Title="Boxer details" Height="550" Width="800">
+        Title="Boxer details" Height="820" Width="800">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="35"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-        </Grid.RowDefinitions>
-        <Label Content="History of fights:" Grid.Row="1"></Label>
-        <DataGrid x:Name="dgridBoxerFights" Grid.Row="2" Margin="0 10 0 0" Grid.ColumnSpan="4" AutoGenerateColumns="False" IsReadOnly="True">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="No." Binding="{Binding FightNumber}" Width="55"></DataGridTextColumn>
-                <DataGridTextColumn Header="Opponent" Binding="{Binding Opponent}" Width="250"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding DateOfFight, StringFormat=\{0:dd-MM-yyyy\}}" Header="Date" Width="200"></DataGridTextColumn>
-                <DataGridTextColumn Header="Result"  Binding="{Binding FightResult}" Width="*">
-                    <DataGridTextColumn.ElementStyle>
-                        <Style TargetType="{x:Type TextBlock}">
-                            <Style.Triggers>
-                                <Trigger Property="Text" Value="Win">
-                                    <Setter Property="Background" Value="#FF8BD669"/>
-                                </Trigger>
-                                <Trigger Property="Text" Value="Loss">
-                                        <Setter Property="Background" Value="#FFB75858"/>
-                                </Trigger>
-                                <Trigger Property="Text" Value="Draw">
-                                    <Setter Property="Background" Value="#FF9B8D8D"/>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </DataGridTextColumn.ElementStyle>
+        <Image Source="/img/close.png" Grid.Column="4" Panel.ZIndex="1" MouseUp="Image_MouseUp" Style="{StaticResource imgClose}"/>
+        <Border Background="#FFFFFF" CornerRadius="10 10 10 10" MouseDown="Window_MouseDown">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="300"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
 
-                </DataGridTextColumn>
-            </DataGrid.Columns>
-        </DataGrid>
-        
-        <StackPanel Grid.Column="1" Grid.Row="0">
-            <Label Content="ID:"></Label>
-            <TextBox x:Name="tbxID" IsEnabled="False"></TextBox>
-            
-            <Label Content="Name:"></Label>
-            <TextBox x:Name="tbxName" IsEnabled="False"></TextBox>
-            
-            <Label Content="Surname:"></Label>
-            <TextBox x:Name="tbxSurname" IsEnabled="False"></TextBox>
-            
-            <Label Content="Division:"></Label>
-            <TextBox x:Name="tbxDivision" IsEnabled="False"></TextBox>
-            
-            <Label Content="Date of birth:"></Label>
-            <TextBox x:Name="tbxDateOfBirth" IsEnabled="False"></TextBox>
-            
-        </StackPanel>
-        <StackPanel Grid.Column="0" Grid.Row="0">
-            <Image Margin="5 5 5 5" x:Name="imgBoxerPhoto" Source ="{Binding Photo_Url}" Width="190" Height="225"></Image>
-        </StackPanel>
-        <StackPanel Margin="5 5 5 5" Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="2">
-            <Label Content="Titles" FontSize="18" HorizontalAlignment="Center"></Label>
-            <Separator Margin="5 5 5 5"></Separator>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="35"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="35"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock Margin="20 0 0 0" Text="History of fights:" Grid.Row="2" Style="{StaticResource NormalText}"></TextBlock>
+                <DataGrid x:Name="dgridBoxerFights" Grid.Row="3" Margin="20 0 20 20" Grid.ColumnSpan="4" AutoGenerateColumns="False" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="No." Binding="{Binding FightNumber}" Width="55"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Opponent" Binding="{Binding Opponent}" Width="250"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding DateOfFight, StringFormat=\{0:dd-MM-yyyy\}}" Header="Date" Width="200"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Result"  Binding="{Binding FightResult}" Width="*">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Style.Triggers>
+                                        <Trigger Property="Text" Value="Win">
+                                            <Setter Property="Background" Value="PaleGreen"/>
+                                        </Trigger>
+                                        <Trigger Property="Text" Value="Loss">
+                                            <Setter Property="Background" Value="LightPink"/>
+                                        </Trigger>
+                                        <Trigger Property="Text" Value="Draw">
+                                            <Setter Property="Background" Value="LightGray"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
 
-            <Label Content="Wins:"></Label>
-            <TextBox x:Name="tbxWins" IsEnabled="False" Background="#FF69C441"></TextBox>
-            
-            <Label Content="Draws:"></Label>
-            <TextBox x:Name="tbxDraws" IsEnabled="False" Background="#FF9B8D8D"></TextBox>
-            
-            <Label Content="Losses:"></Label>
-            <TextBox x:Name="tbxLosses" IsEnabled="False" Background="#FFDA1010"></TextBox>            
+                        </DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
 
-            
-            
-        </StackPanel>
+                <StackPanel Margin="25 0 25 0" Grid.Column="1" Grid.Row="1">
+                    <TextBlock TextWrapping="Wrap" x:Name="txtFullName" Text="Name Surname" Style="{StaticResource TitleText}" Grid.Row="1"/>
+                    <TextBlock Margin="0 10 0 0" Text="ID:" Style="{StaticResource NormalText}"></TextBlock>
+                    <Border BorderBrush="#ACB0AF" BorderThickness="1" CornerRadius="5">
+                        <TextBox Margin="5" x:Name="tbxID" IsEnabled="False" Style="{StaticResource textBox}"></TextBox>
+                    </Border>
+                    <TextBlock Margin="0 10 0 0" Text="Division:" Style="{StaticResource NormalText}"></TextBlock>
+                    <Border BorderBrush="#ACB0AF" BorderThickness="1" CornerRadius="5">
+                        <TextBox Margin="5" x:Name="tbxDivision" IsEnabled="False" Style="{StaticResource textBox}"></TextBox>
+                    </Border>
+                    <TextBlock Margin="0 10 0 0" Text="Date of birth:" Style="{StaticResource NormalText}"></TextBlock>
+                    <Border BorderBrush="#ACB0AF" BorderThickness="1" CornerRadius="5">
+                        <TextBox Margin="5" x:Name="tbxDateOfBirth" IsEnabled="False" Style="{StaticResource textBox}"></TextBox>
+                    </Border>
+                    <Grid Height="70">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                    <TextBlock Margin="0 5 0 0" VerticalAlignment="Center" Text="Wins:" Style="{StaticResource NormalText}"></TextBlock>
+                        <Border BorderBrush="PaleGreen" Margin="54 16 54 12" BorderThickness="1" CornerRadius="5">
+                            <TextBox Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="tbxWins" IsEnabled="False" Style="{StaticResource textBox}"></TextBox>
+                        </Border>
+                        <TextBlock Margin="0 5 0 0" Grid.Column="1" VerticalAlignment="Center" Text="Draws:" Style="{StaticResource NormalText}"></TextBlock>
+                        <Border Grid.Column="1" BorderBrush="LightGray" Margin="64 16 44 16" BorderThickness="1" CornerRadius="5">
+                            <TextBox Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="tbxDraws" IsEnabled="False" Style="{StaticResource textBox}"></TextBox>
+                        </Border>
+                        <TextBlock Margin="0 5 0 0" Grid.Column="2" VerticalAlignment="Center" Text="Losses:" Style="{StaticResource NormalText}"></TextBlock>
+                        <Border Grid.Column="2" BorderBrush="LightPink" Margin="64 16 44 16" BorderThickness="1" CornerRadius="5">
+                            <TextBox Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="tbxLosses" IsEnabled="False" Style="{StaticResource textBox}"></TextBox>
+                        </Border>
+                    </Grid>
+                </StackPanel>
+                
 
-        <Label x:Name="lblInvalidPhotoURL" Content="Invalid photo URL" Visibility="Hidden" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
-        <Label x:Name="lblNoPhotoURL" Content="No photo URL" Visibility="Hidden" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+                    <Image Grid.Row="1" Margin="20" x:Name="imgBoxerPhoto" Source ="{Binding Photo_Url}"></Image>
+
+
+                <TextBlock Grid.Row="1" x:Name="txtInvalidPhotoURL" Text="Invalid photo URL" Visibility="Hidden" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource NormalText}"></TextBlock>
+                <TextBlock Grid.Row="1" x:Name="txtNoPhotoURL" Text="No photo URL" Visibility="Hidden" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource NormalText}"></TextBlock>
+            </Grid>
+        </Border>
     </Grid>
 </Window>

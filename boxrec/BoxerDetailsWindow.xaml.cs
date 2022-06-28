@@ -23,5 +23,17 @@ namespace boxrec
         {
             InitializeComponent();
         }
+
+        private void Image_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            Close();
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                this.DragMove();
+        }
+
     }
 }
