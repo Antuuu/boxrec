@@ -31,7 +31,7 @@ namespace boxrec
                 this.DragMove();
         }
 
-        private void btnSave_Click(object sender, RoutedEventArgs e)
+        private async void btnSave_Click(object sender, RoutedEventArgs e)
         {
             using (BoxrecContext db = new BoxrecContext(MainWindow.connectionString))
             {
@@ -45,7 +45,7 @@ namespace boxrec
                 };
 
                 db.Boxers.Add(boxerToAdd);
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
 
             Close();

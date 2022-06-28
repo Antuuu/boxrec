@@ -52,7 +52,7 @@ namespace boxrec
         }
         
 
-        private void btnSave_Click(object sender, RoutedEventArgs e)
+        private async void btnSave_Click(object sender, RoutedEventArgs e)
         {
 
             using (BoxrecContext db = new BoxrecContext(MainWindow.connectionString))
@@ -78,9 +78,9 @@ namespace boxrec
                 };
 
                 db.Fights.Add(fightToAdd);
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
-            
+
             Close();
         }
 

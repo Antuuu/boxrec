@@ -104,7 +104,7 @@ namespace boxrec
             }
         }
 
-        private void btnRemoveFight_Click(object sender, RoutedEventArgs e)
+        private async void btnRemoveFight_Click(object sender, RoutedEventArgs e)
         {
             if (dgridFights.SelectedItem != null)
             {
@@ -112,7 +112,7 @@ namespace boxrec
                 {
                     Fight fightToRemove = (Fight)dgridFights.SelectedItem;
                     db.Remove(fightToRemove);
-                    db.SaveChanges();
+                    await db.SaveChangesAsync();
                     dgridFights.ItemsSource = FetchFights();
                 }
             }

@@ -30,7 +30,7 @@ namespace boxrec
                 this.DragMove();
         }
 
-        private void btnSave_Click(object sender, RoutedEventArgs e)
+        private async void btnSave_Click(object sender, RoutedEventArgs e)
         { 
             using (BoxrecContext db = new BoxrecContext(MainWindow.connectionString))
             {
@@ -43,7 +43,7 @@ namespace boxrec
                 boxerToEdit.Division_ID = cmbDivision.SelectedIndex + 1;
                 boxerToEdit.DateOfBirth = dpDateOfBirth.SelectedDate;
                 boxerToEdit.Photo_Url = tbxPhotoURL.Text;
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
 
             Close();

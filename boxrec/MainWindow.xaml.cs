@@ -26,7 +26,10 @@ namespace boxrec
     {
         public static string connectionString = @"Data Source=localhost;Initial Catalog=boxrec;Integrated Security=True";
 
-
+        /// <summary>
+        /// Initalize components and use method FetchBoxers()
+        /// </summary>
+        /// 
         public MainWindow()
         {
             InitializeComponent();
@@ -39,6 +42,10 @@ namespace boxrec
                 this.DragMove();
         }
 
+        /// <summary>
+        /// Method <c>FetchBoxers</c>, fetching list of all Boxers from database and returning List<Boxer>
+        /// </summary>
+        /// 
         public static List<Boxer> FetchBoxers()
         {
             using (BoxrecContext db = new BoxrecContext(connectionString))
@@ -48,7 +55,7 @@ namespace boxrec
             }
         }
 
-        public static List<Fight> FetchFights(Boxer boxer)
+        private static List<Fight> FetchFights(Boxer boxer)
         {
             using (BoxrecContext db = new BoxrecContext(connectionString))
             {
@@ -105,7 +112,7 @@ namespace boxrec
             dgridBoxers.ItemsSource = FetchBoxers();
         }
 
-        private void btnRemoveBoxer_Click(object sender, RoutedEventArgs e)
+        private async void btnRemoveBoxer_Click(object sender, RoutedEventArgs e)
         {
             using (BoxrecContext db = new BoxrecContext(connectionString))
             {
@@ -114,7 +121,7 @@ namespace boxrec
 
                     Boxer boxerToRemove = (Boxer)dgridBoxers.SelectedItem;
                     db.Boxers.Remove(boxerToRemove);
-                    db.SaveChanges();
+                    await db.SaveChangesAsync();
                 }
                 dgridBoxers.ItemsSource = FetchBoxers();
             }
