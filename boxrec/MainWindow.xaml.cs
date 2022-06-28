@@ -30,7 +30,7 @@ namespace boxrec
         public MainWindow()
         {
             InitializeComponent();
-            //dgridBoxers.ItemsSource = FetchBoxers();
+            dgridBoxers.ItemsSource = FetchBoxers();
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)

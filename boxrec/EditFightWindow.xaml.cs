@@ -22,6 +22,12 @@ namespace boxrec
         public Boxer boxer1;
         public Boxer boxer2;
 
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                this.DragMove();
+        }
+
         public void UpdateBoxer1()
         {
             tbxID1.Text = boxer1.ID.ToString();

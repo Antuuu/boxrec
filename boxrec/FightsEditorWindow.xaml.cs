@@ -25,6 +25,12 @@ namespace boxrec
             dgridFights.ItemsSource = FetchFights();
         }
 
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                this.DragMove();
+        }
+
         public static List<Fight> FetchFights()
         {
             using (BoxrecContext db = new BoxrecContext(MainWindow.connectionString))

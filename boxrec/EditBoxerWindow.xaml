@@ -4,54 +4,55 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:boxrec"
+        WindowStyle="None"
+        AllowsTransparency="True" 
+        Background="Transparent" 
         mc:Ignorable="d"
-        Title="Edit boxer" Height="430" Width="320">
+        Title="Edit boxer" Height="585" Width="400">
 
     <Window.DataContext>
         <local:BoxerViewModel/>
     </Window.DataContext>
 
-    <StackPanel>
-        <Label Content="ID:"></Label>
-        <TextBox x:Name="tbxID" Margin="5 5 200 5" IsEnabled="False"></TextBox>
+    <Border Background="#FFFFFF" CornerRadius="10 10 10 10" MouseDown="Window_MouseDown">
+        <StackPanel Margin="20">
+            <TextBlock HorizontalAlignment="Left" Foreground="Orange" Text="Edit boxer" Style="{StaticResource TitleText}" Margin="10"></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Text="ID:" Style="{StaticResource NormalText}"></TextBlock>
+            <Border BorderBrush="#ACB0AF" BorderThickness="1" CornerRadius="5">
+                <TextBox Margin="5" PreviewTextInput="PreviewTextInputHandler" DataObject.Pasting="PastingHandler" x:Name="tbxID" Style="{StaticResource textBox}" IsEnabled="False"></TextBox>
+            </Border>
+            <TextBlock HorizontalAlignment="Left" Text="Name:" Style="{StaticResource NormalText}"></TextBlock>
+            <Border BorderBrush="#ACB0AF" BorderThickness="1" CornerRadius="5">
+                <TextBox Margin="5" PreviewTextInput="PreviewTextInputHandler" DataObject.Pasting="PastingHandler" x:Name="tbxName" Text="{Binding Name, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding ErrorCollection[Name]}" Style="{StaticResource textBox}"></TextBox>
+            </Border>
+            <TextBlock HorizontalAlignment="Left" Text="Surname:" Style="{StaticResource NormalText}"></TextBlock>
+            <Border BorderBrush="#ACB0AF" BorderThickness="1" CornerRadius="5">
+                <TextBox Margin="5" PreviewTextInput="PreviewTextInputHandler" DataObject.Pasting="PastingHandler" x:Name="tbxSurname" Text="{Binding Surname, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding ErrorCollection[Surname]}" Style="{StaticResource textBox}"></TextBox>
+            </Border>
+            <TextBlock HorizontalAlignment="Left" Foreground="#878787" Text="Division:" Style="{StaticResource NormalText}"></TextBlock>
+            <ComboBox x:Name="cmbDivision" SelectedIndex="0" Style="{DynamicResource theComboBox}" ItemContainerStyle="{DynamicResource theComboBoxItem}">
+                <ComboBoxItem Tag="div1">Lightweight</ComboBoxItem>
+                <ComboBoxItem Tag="div2">Middleweight</ComboBoxItem>
+                <ComboBoxItem Tag="div3">Super middleweight</ComboBoxItem>
+                <ComboBoxItem Tag="div4">Light heavyweight</ComboBoxItem>
+                <ComboBoxItem Tag="div5">Cruiserweight</ComboBoxItem>
+                <ComboBoxItem Tag="div6">Heavyweight</ComboBoxItem>
+            </ComboBox>
 
-        <Label Content="Name:"></Label>
-        <TextBox PreviewTextInput="PreviewTextInputHandler" DataObject.Pasting="PastingHandler" x:Name="tbxName" Text="{Binding Name, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding ErrorCollection[Name]}" Margin="5 5 5 5"></TextBox>
-
-        <Label Content="Surname:"></Label>
-        <TextBox PreviewTextInput="PreviewTextInputHandler" DataObject.Pasting="PastingHandler" x:Name="tbxSurname" Text="{Binding Surname, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding ErrorCollection[Surname]}"  Margin="5 5 5 5"></TextBox>
-
-        <Label Content="Division:"></Label>
-        <ComboBox x:Name="cmbDivision" Margin="5 5 5 5" SelectedIndex="0">
-            <ComboBoxItem Tag="div1">Lightweight</ComboBoxItem>
-            <ComboBoxItem Tag="div2">Middleweight</ComboBoxItem>
-            <ComboBoxItem Tag="div3">Super middleweight</ComboBoxItem>
-            <ComboBoxItem Tag="div4">Light heavyweight</ComboBoxItem>
-            <ComboBoxItem Tag="div5">Cruiserweight</ComboBoxItem>
-            <ComboBoxItem Tag="div6">Heavyweight</ComboBoxItem>
-        </ComboBox>
-        
-        <Label Content="Date of birth:"></Label>
-        <DatePicker x:Name="dpDateOfBirth"></DatePicker>
-
-            <Label Content="Photo URL:"></Label>
-        <TextBox x:Name="tbxPhotoURL" Margin="5 5 5 5"></TextBox>
-        <Grid>
-            <Button Click="btnSave_Click" HorizontalAlignment="Left" Width="130" x:Name="btnSave" Content="Save" Margin="20 20 150 150">
-                <Button.Style>
-                    <Style TargetType="{x:Type Button}">
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding Text.Length, ElementName=tbxName, UpdateSourceTrigger=PropertyChanged}" Value="0">
-                                <Setter Property="IsEnabled" Value="False"/>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding Text.Length, ElementName=tbxSurname, UpdateSourceTrigger=PropertyChanged}" Value="0">
-                                <Setter Property="IsEnabled" Value="False"/>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
-            </Button>
-            <Button Click="btnCancel_Click" HorizontalAlignment="Right" Width="130" x:Name="btnCancel" Content="Cancel" Margin="150 20 20 150"></Button>
-        </Grid>
-    </StackPanel>
+            <TextBlock HorizontalAlignment="Left" Text="Date of birth:" Style="{StaticResource NormalText}"></TextBlock>
+            <Border BorderBrush="#ACB0AF" BorderThickness="1" CornerRadius="5">
+                <DatePicker Margin="5" BorderBrush="Transparent" x:Name="dpDateOfBirth" SelectedDate="01-01-1990"></DatePicker>
+            </Border>
+            <TextBlock HorizontalAlignment="Left" Text="Image URL:" Style="{StaticResource NormalText}"></TextBlock
+>
+            <Border BorderBrush="#ACB0AF" BorderThickness="1" CornerRadius="5">
+                <TextBox Margin="5" x:Name="tbxPhotoURL" BorderBrush="Transparent" Style="{StaticResource textBox}"></TextBox>
+            </Border>
+            <Grid>
+                <Button Click="btnSave_Click" HorizontalAlignment="Left" Height="55" Width="160" x:Name="btnSave" Content="Save" Style="{StaticResource saveButton}">
+                </Button>
+                <Button Click="btnCancel_Click" HorizontalAlignment="Right" Height="55" Width="160" x:Name="btnCancel" Content="Cancel" Style="{StaticResource mainButton}"></Button>
+            </Grid>
+        </StackPanel>
+    </Border>
 </Window>

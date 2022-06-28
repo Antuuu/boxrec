@@ -24,6 +24,11 @@ namespace boxrec
             InitializeComponent();
         }
 
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                this.DragMove();
+        }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         { 
