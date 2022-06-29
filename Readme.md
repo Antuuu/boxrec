@@ -7,6 +7,7 @@ Boxrec is a WPF CRUD application with amazing GUI which gives you opportunity to
 - Generate detailed report of boxer fights.
 - Secured app acces.
 ![Login Screen](app_images/login_screen.PNG)
+- How it looks:
 ![Boxer Details](app_images/boxer_details.PNG)
 ## Tech
 Boxrec is built on top of:
