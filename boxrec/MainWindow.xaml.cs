@@ -137,7 +137,14 @@ namespace boxrec
 
                     Boxer boxerToRemove = (Boxer)dgridBoxers.SelectedItem;
                     db.Boxers.Remove(boxerToRemove);
-                    await db.SaveChangesAsync();
+                    try
+                    {
+                        await db.SaveChangesAsync();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("You need to remove boxer fights before you delete boxer.");
+                    }
                 }
                 dgridBoxers.ItemsSource = FetchBoxers();
             }
