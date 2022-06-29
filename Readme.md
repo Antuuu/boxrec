@@ -6,7 +6,7 @@ Boxrec is a WPF CRUD application with amazing GUI which gives you opportunity to
 - Add, edit, remove fight to database.
 - Generate detailed report of boxer fights.
 - Secured app acces.
-app_images/boxer_details.PNG
+![Login Screen](app_images/boxer_details.PNG)
 ## Tech
 Boxrec is built on top of:
 - [.net 6.0] - backend, WPF frontend.
