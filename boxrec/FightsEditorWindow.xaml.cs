@@ -19,6 +19,11 @@ namespace boxrec
     /// </summary>
     public partial class FightsEditorWindow : Window
     {
+
+        /// <summary>
+        /// Initalization FightsEditorWindow window with data fetched with <c>FetchFights()</c> method.
+        /// </summary>
+        /// 
         public FightsEditorWindow()
         {
             InitializeComponent();
@@ -36,7 +41,7 @@ namespace boxrec
                 this.DragMove();
         }
 
-        public static List<Fight> FetchFights()
+        private static List<Fight> FetchFights()
         {
             using (BoxrecContext db = new BoxrecContext(MainWindow.connectionString))
             {

@@ -19,6 +19,9 @@ namespace boxrec
     /// </summary>
     public partial class SelectBoxer2Window : Window
     {
+        /// <summary>
+        /// Initalize SelectBoxer1Window window.
+        /// </summary>
         public SelectBoxer2Window()
         {
             InitializeComponent();

@@ -27,7 +27,9 @@ namespace boxrec
             if (e.ChangedButton == MouseButton.Left)
                 this.DragMove();
         }
-
+        /// <summary>
+        /// Method <c>UpdateBoxer1()</c> mapping textbox of UpdateBoxer window to data of first Boxer who participated in fight
+        /// </summary>
         public void UpdateBoxer1()
         {
             tbxID1.Text = boxer1.ID.ToString();
@@ -36,7 +38,9 @@ namespace boxrec
             tbxDivision1.Text = boxer1.Division;
             tbxDateOfBirth1.Text = boxer1.DateOfBirth.ToString();
         }
-
+        /// <summary>
+        /// Method <c>UpdateBoxer2()</c> mapping textbox of UpdateBoxer window to data of second Boxer who participated in fight
+        /// </summary>
         public void UpdateBoxer2()
         {
             tbxID2.Text = boxer2.ID.ToString();
@@ -46,6 +50,9 @@ namespace boxrec
             tbxDateOfBirth2.Text = boxer2.DateOfBirth.ToString();
         }
 
+        /// <summary>
+        /// Initalize and display EdidFighWindow
+        /// </summary>/// 
         public EditFightWindow()
         {
             InitializeComponent();

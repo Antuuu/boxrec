@@ -10,14 +10,19 @@ namespace boxrec
 {
     internal class BoxerViewModel : ObservableObject, IDataErrorInfo
     {
-
+        /// <summary>
+        /// string <c>Error</c> throw Error if inserted data is not correct
+        /// </summary>
         public string Error { get { return null; } }
 
         private string? _name;
         private string? _surname;
 
-        public Dictionary<string, string> ErrorCollection { get; private set; } = new Dictionary<string, string>();
 
+        public Dictionary<string, string> ErrorCollection { get; private set; } = new Dictionary<string, string>();
+        /// <summary>
+        /// string <c>this</c> Verify if inserted name and surname is not null or empty
+        /// </summary>
         public string this[string name]
         {
             get
@@ -46,7 +51,9 @@ namespace boxrec
                 return result;
             }
         }
-
+        /// <summary>
+        /// string <c>Name</c> Set private string? _name; when data is inserted to the TextBox
+        /// </summary>
         public string Name
         {
             get { return _name; }
@@ -55,7 +62,9 @@ namespace boxrec
                 OnPropertyChanged(ref _name, value);
             }
         }
-
+        /// <summary>
+        /// string <c>Surname</c> Set private string? _surname; when data is inserted to the TextBox
+        /// </summary>
         public string Surname
         {
             get { return _surname; }

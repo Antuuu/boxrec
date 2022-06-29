@@ -18,11 +18,6 @@ using System.Windows.Shapes;
 
 namespace boxrec
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    ///
-    
     //TO DO list
     //Db:
     //1.) Klucze obce na bazie(boxers + divisions)
@@ -38,6 +33,11 @@ namespace boxrec
     //5.) Unit tests
     //6.) Instalator
 
+
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    ///
     public partial class MainWindow : Window
     {
         public static string connectionString = @"Data Source=localhost;Initial Catalog=boxrec;Integrated Security=True";

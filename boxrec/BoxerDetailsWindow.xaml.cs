@@ -19,6 +19,9 @@ namespace boxrec
     /// </summary>
     public partial class BoxerDetailsWindow : Window
     {
+        /// <summary>
+        /// Initalize and display BoxerDetailsWindow window.
+        /// </summary>
         public BoxerDetailsWindow()
         {
             InitializeComponent();

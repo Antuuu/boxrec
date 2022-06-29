@@ -19,6 +19,9 @@ namespace boxrec
     /// </summary>
     public partial class EditBoxerWindow : Window
     {
+        /// <summary>
+        /// Initalize and display EditBoxerWindow
+        /// </summary>
         public EditBoxerWindow()
         {
             InitializeComponent();

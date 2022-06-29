@@ -10,24 +10,70 @@ using System.Threading.Tasks;
 
 namespace boxrec
 {
-     
+    /// <summary>
+    /// Class <c>Boxer</c> models boxer person.
+    /// </summary>
+    /// 
     public class Boxer
     {
 
-
+        /// <summary>
+        /// int <c>ID</c> referts to Boxer ID in database.
+        /// </summary>
+        /// 
         public int ID { get; set; }
+        /// <summary>
+        /// string <c>Name</c> referts to Boxer Name in database.
+        /// </summary>
+        /// 
         public string? Name { get; set; }
+        /// <summary>
+        /// string <c>Surname</c> referts to Boxer Surname in database.
+        /// </summary>
+        /// 
         public string? Surname { get; set; }
+        /// <summary>
+        /// DateTime <c>DateOfBirth</c> referts to Boxer DateOfBirth in database.
+        /// </summary>
+        /// 
         public DateTime? DateOfBirth { get; set; }
+        /// <summary>
+        /// int <c>Division_ID</c> referts to Boxer Division_ID in database.
+        /// </summary>
+        /// 
         public int Division_ID { get; set; }
+        /// <summary>
+        /// string <c>Division</c> get Division name based on public int Division_ID to fetch name of the division.
+        /// </summary>
+        /// 
         public string Division { get => GetDivision(); }
+        /// <summary>
+        /// string <c>Photo_Url</c> referts to Boxer Photo_Url in database.
+        /// </summary>
+        /// 
         public string? Photo_Url { get; set; }
+        /// <summary>
+        /// int <c>Wins</c> not mapped property used to calculat Wins of particulat boxer in FetchFight() method. 
+        /// </summary>
+        /// 
         [NotMapped]
         public int Wins { get; set; }
+        /// <summary>
+        /// int <c>Loses</c> not mapped property used to calculat Loses of particulat boxer in FetchFight() method. 
+        /// </summary>
+        /// 
         [NotMapped]
         public int Loses { get; set; }
+        /// <summary>
+        /// int <c>Draws</c> not mapped property used to calculat Draws of particulat boxer in FetchFight() method. 
+        /// </summary>
+        /// 
         [NotMapped]
         public int Draws { get; set; }
+        /// <summary>
+        /// string <c>Record</c> not mapped property used generate string with record of boxer with GetRecord() method.
+        /// </summary>
+        /// 
         public string? Record { get => GetRecord(); }
 
 
