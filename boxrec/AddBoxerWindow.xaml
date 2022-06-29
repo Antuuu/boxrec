@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:boxrec"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         WindowStyle="None"
         AllowsTransparency="True" 
         Background="Transparent" 
@@ -36,7 +37,7 @@
 
             <TextBlock HorizontalAlignment="Left" Text="Date of birth:" Style="{StaticResource NormalText}"></TextBlock>
             <Border BorderBrush="#ACB0AF" BorderThickness="1" CornerRadius="5">
-                <DatePicker Margin="5" BorderBrush="Transparent" x:Name="dpDateOfBirth" SelectedDate="01-01-1990" Style="{StaticResource textBox}"></DatePicker>
+                <DatePicker Margin="5" BorderBrush="Transparent" x:Name="dpDateOfBirth" DisplayDateStart="1950/01/01" DisplayDateEnd="{x:Static sys:DateTime.Now}" SelectedDate="{x:Static sys:DateTime.Now}" Style="{StaticResource textBox}"></DatePicker>
             </Border>
             <TextBlock HorizontalAlignment="Left" Text="Image URL:" Style="{StaticResource NormalText}"></TextBlock
 >
