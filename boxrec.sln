@@ -5,6 +5,8 @@ VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "boxrec", "boxrec\boxrec.csproj", "{EBD2AC0B-9669-43D7-8285-EA4A44639067}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "boxrec_setup", "boxrec_setup\boxrec_setup.vdproj", "{AF071F78-CF67-4DEB-9A20-CD6F8D107E1A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,8 @@ Global
 		{EBD2AC0B-9669-43D7-8285-EA4A44639067}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EBD2AC0B-9669-43D7-8285-EA4A44639067}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EBD2AC0B-9669-43D7-8285-EA4A44639067}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF071F78-CF67-4DEB-9A20-CD6F8D107E1A}.Debug|Any CPU.ActiveCfg = Debug
+		{AF071F78-CF67-4DEB-9A20-CD6F8D107E1A}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
