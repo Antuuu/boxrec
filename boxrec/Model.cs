@@ -40,9 +40,16 @@ namespace boxrec
             this.ConnectionString = connectionString;
         }
 
+        public BoxrecContext(DbContextOptions options) : base(options)
+        {
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            options.UseSqlServer(this.ConnectionString);
+            if (!options.IsConfigured)
+            {
+                options.UseSqlServer(this.ConnectionString);
+            }
         }
     }
 

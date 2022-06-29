@@ -22,13 +22,9 @@ namespace boxrec
     //Db:
 
     //2.) uzupełnienie bazy
-    //Dokumentacja:
 
-    //2.) Readme.md
-    //Kod:
 
     //5.) Unit tests
-    //6.) Instalator
 
 
     /// <summary>
