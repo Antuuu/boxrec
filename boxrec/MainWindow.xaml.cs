@@ -140,6 +140,7 @@ namespace boxrec
                     try
                     {
                         await db.SaveChangesAsync();
+                        dgridBoxers.ItemsSource = FetchBoxers();
                     }
                     catch (Exception ex)
                     {
