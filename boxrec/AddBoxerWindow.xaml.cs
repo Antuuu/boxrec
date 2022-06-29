@@ -31,24 +31,33 @@ namespace boxrec
                 this.DragMove();
         }
 
+        DateTime? start = DateTime.Today.AddDays(1);
+
         private async void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            using (BoxrecContext db = new BoxrecContext(MainWindow.connectionString))
+            try
             {
-                Boxer boxerToAdd = new Boxer
+                using (BoxrecContext db = new BoxrecContext(MainWindow.connectionString))
                 {
-                    Name = tbxName.Text,
-                    Surname = tbxSurname.Text,
-                    Division_ID = cmbDivision.SelectedIndex + 1,
-                    DateOfBirth = dpDateOfBirth.SelectedDate,
-                    Photo_Url = tbxPhotoURL.Text,
-                };
+                    Boxer boxerToAdd = new Boxer
+                    {
+                        Name = tbxName.Text,
+                        Surname = tbxSurname.Text,
+                        Division_ID = cmbDivision.SelectedIndex + 1,
+                        DateOfBirth = dpDateOfBirth.SelectedDate,
+                        Photo_Url = tbxPhotoURL.Text,
+                    };
 
-                db.Boxers.Add(boxerToAdd);
-                await db.SaveChangesAsync();
+                    db.Boxers.Add(boxerToAdd);
+                    await db.SaveChangesAsync();
+                }
+                Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Invalid or empty date.");
             }
 
-            Close();
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)

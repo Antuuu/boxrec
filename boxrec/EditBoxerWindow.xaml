@@ -42,7 +42,7 @@
 
             <TextBlock HorizontalAlignment="Left" Text="Date of birth:" Style="{StaticResource NormalText}"></TextBlock>
             <Border BorderBrush="#ACB0AF" BorderThickness="1" CornerRadius="5">
-                <DatePicker Margin="5" BorderBrush="Transparent" x:Name="dpDateOfBirth" DisplayDateStart="1950/01/01" DisplayDateEnd="{x:Static sys:DateTime.Now}" SelectedDate="{x:Static sys:DateTime.Now}" Style="{StaticResource textBox}"></DatePicker>
+                <DatePicker Margin="5" BorderBrush="Transparent" x:Name="dpDateOfBirth" DisplayDateStart="1900/01/01" DisplayDateEnd="{x:Static sys:DateTime.Now}" SelectedDate="{x:Static sys:DateTime.Now}" Style="{StaticResource textBox}"></DatePicker>
             </Border>
             <TextBlock HorizontalAlignment="Left" Text="Image URL:" Style="{StaticResource NormalText}"></TextBlock
 >

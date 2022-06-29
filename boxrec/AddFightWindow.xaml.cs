@@ -54,34 +54,40 @@ namespace boxrec
 
         private async void btnSave_Click(object sender, RoutedEventArgs e)
         {
-
-            using (BoxrecContext db = new BoxrecContext(MainWindow.connectionString))
+            try
             {
-
-                int winnerID;
-                if (rbtnBoxer1.IsChecked == true)
+                using (BoxrecContext db = new BoxrecContext(MainWindow.connectionString))
                 {
-                    winnerID = boxer1.ID;
+
+                    int winnerID;
+                    if (rbtnBoxer1.IsChecked == true)
+                    {
+                        winnerID = boxer1.ID;
+                    }
+                    else if (rbtnBoxer2.IsChecked == true)
+                    {
+                        winnerID = boxer2.ID;
+                    }
+                    else winnerID = 0;
+
+                    Fight fightToAdd = new Fight
+                    {
+                        Boxer1_ID = boxer1.ID,
+                        Boxer2_ID = boxer2.ID,
+                        Winner_ID = winnerID,
+                        DateOfFight = dpDateOfFight.SelectedDate,
+                    };
+
+                    db.Fights.Add(fightToAdd);
+                    await db.SaveChangesAsync();
                 }
-                else if (rbtnBoxer2.IsChecked == true)
-                {
-                    winnerID = boxer2.ID;
-                }
-                else winnerID = 0;
 
-                Fight fightToAdd = new Fight
-                {
-                    Boxer1_ID = boxer1.ID,
-                    Boxer2_ID = boxer2.ID,
-                    Winner_ID = winnerID,
-                    DateOfFight = dpDateOfFight.SelectedDate,
-                };
-
-                db.Fights.Add(fightToAdd);
-                await db.SaveChangesAsync();
+                Close();
             }
-
-            Close();
+            catch (Exception ex)
+            {
+                MessageBox.Show("Invalid or empty date.");
+            }
         }
 
 

@@ -34,22 +34,29 @@ namespace boxrec
         }
 
         private async void btnSave_Click(object sender, RoutedEventArgs e)
-        { 
-            using (BoxrecContext db = new BoxrecContext(MainWindow.connectionString))
+        {
+            try
             {
-                int idToEdit = Int32.Parse(tbxID.Text);
-                Boxer boxerToEdit = db.Boxers
-                    .Where(x => x.ID == idToEdit)
-                    .First();
-                boxerToEdit.Name = tbxName.Text;
-                boxerToEdit.Surname = tbxSurname.Text;
-                boxerToEdit.Division_ID = cmbDivision.SelectedIndex + 1;
-                boxerToEdit.DateOfBirth = dpDateOfBirth.SelectedDate;
-                boxerToEdit.Photo_Url = tbxPhotoURL.Text;
-                await db.SaveChangesAsync();
-            }
+                using (BoxrecContext db = new BoxrecContext(MainWindow.connectionString))
+                {
+                    int idToEdit = Int32.Parse(tbxID.Text);
+                    Boxer boxerToEdit = db.Boxers
+                        .Where(x => x.ID == idToEdit)
+                        .First();
+                    boxerToEdit.Name = tbxName.Text;
+                    boxerToEdit.Surname = tbxSurname.Text;
+                    boxerToEdit.Division_ID = cmbDivision.SelectedIndex + 1;
+                    boxerToEdit.DateOfBirth = dpDateOfBirth.SelectedDate;
+                    boxerToEdit.Photo_Url = tbxPhotoURL.Text;
+                    await db.SaveChangesAsync();
+                }
 
-            Close();
+                Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Invalid or empty date.");
+            }
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)

@@ -20,16 +20,13 @@ namespace boxrec
 {
     //TO DO list
     //Db:
-    //1.) Klucze obce na bazie(boxers + divisions)
+
     //2.) uzupełnienie bazy
     //Dokumentacja:
-    //1.) Dokumentacja xml publicznych składników kodu.
+
     //2.) Readme.md
     //Kod:
-    //1.) Zakres dat w datepickerach
-    //2.) Zmiana możliwych metod class etc na private
-    //3.) Sprawdzenie properties class
-    //4.) Zabezpiecznie operacji bazodanowych - np.usunięcie Boxera mającego walki
+
     //5.) Unit tests
     //6.) Instalator
 
@@ -144,7 +141,7 @@ namespace boxrec
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("You need to remove boxer fights before you delete boxer.");
+                        MessageBox.Show("You need to remove boxer's fights before you delete boxer.");
                     }
                 }
                 dgridBoxers.ItemsSource = FetchBoxers();

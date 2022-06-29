@@ -11,17 +11,21 @@ namespace boxrec
     internal class BoxerViewModel : ObservableObject, IDataErrorInfo
     {
         /// <summary>
-        /// string <c>Error</c> throw Error if inserted data is not correct
+        /// string <c>Error</c> implemented by interface, not used in the program
         /// </summary>
         public string Error { get { return null; } }
 
         private string? _name;
         private string? _surname;
 
+        /// <summary>
+        /// Dictionary <c>ErrorColection</c> Stores error messages
+        /// </summary>
 
         public Dictionary<string, string> ErrorCollection { get; private set; } = new Dictionary<string, string>();
+
         /// <summary>
-        /// string <c>this</c> Verify if inserted name and surname is not null or empty
+        /// string <c>this</c> Indexer verify if inserted name is null or empty
         /// </summary>
         public string this[string name]
         {
@@ -40,6 +44,7 @@ namespace boxrec
                         if (string.IsNullOrWhiteSpace(Surname))
                             result = "Surname cannot be empty.";
                         break;
+
                 }
 
                 if (ErrorCollection.ContainsKey(name))

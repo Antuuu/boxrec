@@ -61,38 +61,44 @@ namespace boxrec
 
         private async void btnSave_Click(object sender, RoutedEventArgs e)
         {
-
-            using (BoxrecContext db = new BoxrecContext(MainWindow.connectionString))
+            try
             {
-                int idToEdit = Int32.Parse(tbxFightID.Text);
-
-                Fight fight = db.Fights
-                              .Where(f => f.ID == idToEdit)
-                              .First();
-
-                int winnerID;
-
-                if (rbtnBoxer1.IsChecked == true)
+                using (BoxrecContext db = new BoxrecContext(MainWindow.connectionString))
                 {
-                    winnerID = boxer1.ID;
+                    int idToEdit = Int32.Parse(tbxFightID.Text);
+
+                    Fight fight = db.Fights
+                                  .Where(f => f.ID == idToEdit)
+                                  .First();
+
+                    int winnerID;
+
+                    if (rbtnBoxer1.IsChecked == true)
+                    {
+                        winnerID = boxer1.ID;
+                    }
+                    else if (rbtnBoxer2.IsChecked == true)
+                    {
+                        winnerID = boxer2.ID;
+                    }
+                    else winnerID = 0;
+
+                    fight.Boxer1_ID = boxer1.ID;
+                    fight.Boxer2_ID = boxer2.ID;
+                    fight.Winner_ID = winnerID;
+                    fight.DateOfFight = dpDateOfFight.SelectedDate;
+
+
+
+                    await db.SaveChangesAsync();
                 }
-                else if (rbtnBoxer2.IsChecked == true)
-                {
-                    winnerID = boxer2.ID;
-                }
-                else winnerID = 0;
 
-                fight.Boxer1_ID = boxer1.ID;
-                fight.Boxer2_ID = boxer2.ID;
-                fight.Winner_ID = winnerID;
-                fight.DateOfFight = dpDateOfFight.SelectedDate;
-
-
-
-                await db.SaveChangesAsync();
+                Close();
             }
-
-            Close();
+            catch (Exception ex)
+            {
+                MessageBox.Show("Invalid or empty date.");
+            }
         }
 
 

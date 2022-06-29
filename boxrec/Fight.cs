@@ -32,7 +32,7 @@ namespace boxrec
         /// string <c>Boxer1</c> fetch name and surname using <c>GetBoxer1</c> method based on ID of Boxer
         /// </summary>
         /// 
-        public string Boxer1 { get => GetBoxer1(); }
+        public string Boxer1 { get => GetBoxerFullName(this.Boxer1_ID); }
         /// <summary>
         /// int <c>Boxer2_ID</c> referts to the ID of first boxer who participated in fight
         /// </summary>
@@ -42,7 +42,7 @@ namespace boxrec
         /// string <c>Boxer2</c> fetch name and surname using <c>GetBoxer2</c> method based on ID of Boxer
         /// </summary>
         /// 
-        public string Boxer2 { get => GetBoxer2(); }
+        public string Boxer2 { get => GetBoxerFullName(this.Boxer2_ID); }
         /// <summary>
         /// string <c>Winner</c> fetch name and surname using <c>GetWinner</c> method based on ID of Winner
         /// </summary>
@@ -86,24 +86,13 @@ namespace boxrec
             else return "Draw";
         }
 
-        private string GetBoxer1()
+        private string GetBoxerFullName(int id)
         {
             using (BoxrecContext db = new BoxrecContext(@"Data Source=localhost;Initial Catalog=boxrec;Integrated Security=True"))
             {
-                string? boxer1Name = (from b in db.Boxers where b.ID == this.Boxer1_ID select b.Name).FirstOrDefault();
-                string? boxer1Surname = (from b in db.Boxers where b.ID == this.Boxer1_ID select b.Surname).FirstOrDefault();
-                return $"{boxer1Name} {boxer1Surname}";
-            }
-        }
-
-        // We doubled code hare, maybe we should use one method GetBoxer which use BoxerID parameter?
-        private string GetBoxer2()
-        {
-            using (BoxrecContext db = new BoxrecContext(@"Data Source=localhost;Initial Catalog=boxrec;Integrated Security=True"))
-            {
-                string? boxer2Name = (from b in db.Boxers where b.ID == this.Boxer2_ID select b.Name).FirstOrDefault();
-                string? boxer2Surname = (from b in db.Boxers where b.ID == this.Boxer2_ID select b.Surname).FirstOrDefault();
-                return $"{boxer2Name} {boxer2Surname}";
+                string? boxerName = (from b in db.Boxers where b.ID == id select b.Name).FirstOrDefault();
+                string? boxerSurname = (from b in db.Boxers where b.ID == id select b.Surname).FirstOrDefault();
+                return $"{boxerName} {boxerSurname}";
             }
         }
 
