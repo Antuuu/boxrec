@@ -10,7 +10,7 @@ Boxrec is a WPF CRUD application with amazing GUI which gives You opportunity to
 
 ## Tech
 Boxrec is built on top of:
-- [.net 6.0] - backend.
+- [.net 6.0] - backend, WPF frontend.
 - [SQL Server Express 2019] - database engine.
 
 
