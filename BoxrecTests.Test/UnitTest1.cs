@@ -169,7 +169,7 @@ public class UnitTest1
             var wins = (from f in db.Fights where f.Winner_ID == boxer.ID select f).ToList();
             var loses = (from f in db.Fights where (f.Boxer1_ID == boxer.ID || f.Boxer2_ID == boxer.ID) && (f.Winner_ID != boxer.ID && f.Winner_ID != null) select f).ToList();
             var draws = (from f in db.Fights where (f.Boxer1_ID == boxer.ID || f.Boxer2_ID == boxer.ID) && f.Winner_ID == null select f).ToList();
-            string record = $"{wins.Count()}-{draws.Count}-{loses.Count}";
+            string record = $"{wins.Count}-{draws.Count}-{loses.Count}";
             Assert.Equal("2-1-0", record);
             db.Database.EnsureDeleted();
         }
