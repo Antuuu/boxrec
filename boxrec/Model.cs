@@ -34,10 +34,6 @@ namespace boxrec
         /// <summary>
         /// Configure <c>BoxrecContext</c> connection string
         /// </summary>
-        public BoxrecContext(string connectionString)
-        {
-            this.ConnectionString = connectionString;
-        }
 
         public BoxrecContext(DbContextOptions options) : base(options)
         {

@@ -43,7 +43,7 @@ namespace boxrec
 
         private static List<Fight> FetchFights()
         {
-            using (BoxrecContext db = new BoxrecContext(MainWindow.connectionString))
+            using (BoxrecContext db = new BoxrecContext())
             {
                 List<Fight> fights = new List<Fight>();
                 return fights = db.Fights.ToList();
@@ -61,7 +61,7 @@ namespace boxrec
         {
             if (dgridFights.SelectedItem != null)
             {
-                using (BoxrecContext db = new BoxrecContext(@"Data Source=localhost;Initial Catalog=boxrec;Integrated Security=True"))
+                using (BoxrecContext db = new BoxrecContext())
                 {
                     EditFightWindow editFight = new EditFightWindow();
                     Fight fightToEdit = (Fight)dgridFights.SelectedItem;
@@ -113,7 +113,7 @@ namespace boxrec
         {
             if (dgridFights.SelectedItem != null)
             {
-                using (BoxrecContext db = new BoxrecContext(@"Data Source=localhost;Initial Catalog=boxrec;Integrated Security=True"))
+                using (BoxrecContext db = new BoxrecContext())
                 {
                     Fight fightToRemove = (Fight)dgridFights.SelectedItem;
                     db.Remove(fightToRemove);

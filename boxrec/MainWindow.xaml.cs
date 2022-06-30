@@ -57,7 +57,7 @@ namespace boxrec
         /// 
         public static List<Boxer> FetchBoxers()
         {
-            using (BoxrecContext db = new BoxrecContext(connectionString))
+            using (var db = new BoxrecContext())
             {
                 List<Boxer> boxers = new List<Boxer>();
                 return boxers = db.Boxers.ToList();
@@ -66,7 +66,7 @@ namespace boxrec
 
         private static List<Fight> FetchFights(Boxer boxer)
         {
-            using (BoxrecContext db = new BoxrecContext(connectionString))
+            using (var db = new BoxrecContext())
             {
                 List<Fight> fights = new List<Fight>();
                 fights = (from f in db.Fights where f.Boxer1_ID == boxer.ID || f.Boxer2_ID == boxer.ID select f).ToList();
@@ -123,7 +123,7 @@ namespace boxrec
 
         private async void btnRemoveBoxer_Click(object sender, RoutedEventArgs e)
         {
-            using (BoxrecContext db = new BoxrecContext(connectionString))
+            using (var db = new BoxrecContext())
             {
                 if (dgridBoxers.SelectedItem != null)
                 {
@@ -147,7 +147,7 @@ namespace boxrec
 
         private void btnEditBoxer_Click(object sender, RoutedEventArgs e)
         {
-            using (BoxrecContext db = new BoxrecContext(connectionString))
+            using (var db = new BoxrecContext())
             {
                 if (dgridBoxers.SelectedItem != null)
                 {

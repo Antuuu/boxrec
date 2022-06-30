@@ -81,7 +81,7 @@ namespace boxrec
 
         private string GetDivision()
         {
-            using (BoxrecContext db = new BoxrecContext(@"Data Source=localhost;Initial Catalog=boxrec;Integrated Security=True"))
+            using (var db = new BoxrecContext())
             {
                 string? division = (from d in db.Divisions where d.ID == this.Division_ID select d.Name).FirstOrDefault();
                 return division;
@@ -95,10 +95,9 @@ namespace boxrec
             int l;
             int d;
 
-            using (BoxrecContext db = new BoxrecContext(@"Data Source=localhost;Initial Catalog=boxrec;Integrated Security=True"))
+            using (var db = new BoxrecContext())
             {
-                List<Fight> fights = new List<Fight>();
-                fights = (from f in db.Fights where f.Boxer1_ID == this.ID || f.Boxer2_ID == this.ID select f).ToList();
+                var fights = (from f in db.Fights where f.Boxer1_ID == this.ID || f.Boxer2_ID == this.ID select f).ToList();
                 var wins = (from f in db.Fights where f.Winner_ID == this.ID select f).ToList();
                 var loses = (from f in db.Fights where (f.Boxer1_ID == this.ID || f.Boxer2_ID == this.ID) && (f.Winner_ID != this.ID && f.Winner_ID != null) select f).ToList();
                 var draws = (from f in db.Fights where (f.Boxer1_ID == this.ID || f.Boxer2_ID == this.ID) && f.Winner_ID == null select f).ToList();

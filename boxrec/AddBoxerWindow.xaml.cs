@@ -37,7 +37,7 @@ namespace boxrec
         {
             try
             {
-                using (BoxrecContext db = new BoxrecContext(MainWindow.connectionString))
+                using (BoxrecContext db = new BoxrecContext())
                 {
                     Boxer boxerToAdd = new Boxer
                     {

@@ -63,7 +63,7 @@ namespace boxrec
         {
             try
             {
-                using (BoxrecContext db = new BoxrecContext(MainWindow.connectionString))
+                using (BoxrecContext db = new BoxrecContext())
                 {
                     int idToEdit = Int32.Parse(tbxFightID.Text);
 
