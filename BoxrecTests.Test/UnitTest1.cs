@@ -16,23 +16,23 @@ public class UnitTest1
             .Options;
 
 
-        // Insert seed data into the database using one instance of the context
-        using (var context = new BoxrecContext(options))
+        // Insert seed data into the database using one instance of the db
+        using (var db = new BoxrecContext(options))
         {
-            context.Boxers.Add(new Boxer { ID = 1, Name = "Tyson", Surname = "Fury", DateOfBirth = System.DateTime.Today, Division_ID = 1 });
-            context.Boxers.Add(new Boxer { ID = 2, Name = "Tyson", Surname = "Ziemniak", DateOfBirth = System.DateTime.Today, Division_ID = 1 });
-            context.Boxers.Add(new Boxer { ID = 3, Name = "Tyson", Surname = "Karmel", DateOfBirth = System.DateTime.Today, Division_ID = 1 });
-            context.SaveChanges();
+            db.Boxers.Add(new Boxer { ID = 1, Name = "Tyson", Surname = "Fury", DateOfBirth = System.DateTime.Today, Division_ID = 1 });
+            db.Boxers.Add(new Boxer { ID = 2, Name = "Tyson", Surname = "Ziemniak", DateOfBirth = System.DateTime.Today, Division_ID = 1 });
+            db.Boxers.Add(new Boxer { ID = 3, Name = "Tyson", Surname = "Karmel", DateOfBirth = System.DateTime.Today, Division_ID = 1 });
+            db.SaveChanges();
 
         }
 
-        //Use a clean instance of the context to run the test
-        using (var context = new BoxrecContext(options))
+        //Use a clean instance of the db to run the test
+        using (var db = new BoxrecContext(options))
         {
             List<Boxer> boxers = new List<Boxer>();
-            boxers = context.Boxers.ToList();
+            boxers = db.Boxers.ToList();
             Assert.Equal(3, boxers.Count);
-            context.Database.EnsureDeleted();
+            db.Database.EnsureDeleted();
         }
     }
 
@@ -44,20 +44,20 @@ public class UnitTest1
             .Options;
 
 
-        // Insert seed data into the database using one instance of the context
-        using (var context = new BoxrecContext(options))
+        // Insert seed data into the database using one instance of the db
+        using (var db = new BoxrecContext(options))
         {
-            context.Boxers.Add(new Boxer { ID = 1, Name = "Tyson", Surname = "Fury", DateOfBirth = System.DateTime.Today, Division_ID = 1, Photo_Url="https://to/img.png" });
-            context.SaveChanges();
+            db.Boxers.Add(new Boxer { ID = 1, Name = "Tyson", Surname = "Fury", DateOfBirth = System.DateTime.Today, Division_ID = 1, Photo_Url="https://to/img.png" });
+            db.SaveChanges();
         }
 
-        //Use a clean instance of the context to run the test
-        using (var context = new BoxrecContext(options))
+        //Use a clean instance of the db to run the test
+        using (var db = new BoxrecContext(options))
         {
             List<Boxer> boxers = new List<Boxer>();
-            boxers = context.Boxers.ToList();
+            boxers = db.Boxers.ToList();
             Assert.Equal("https://to/img.png", boxers[0].Photo_Url);
-            context.Database.EnsureDeleted();
+            db.Database.EnsureDeleted();
         }
     }
 
@@ -69,21 +69,21 @@ public class UnitTest1
             .Options;
 
 
-        // Insert seed data into the database using one instance of the context
-        using (var context = new BoxrecContext(options))
+        // Insert seed data into the database using one instance of the db
+        using (var db = new BoxrecContext(options))
         {
-            context.Boxers.Add(new Boxer { ID = 1, Name = "Tyson", Surname = "Fury", DateOfBirth = System.DateTime.Today, Division_ID = 1 });
-            context.Boxers.Add(new Boxer { ID = 2, Name = "Joe", Surname = "Joyce", DateOfBirth = System.DateTime.Today, Division_ID = 1 });
-            context.Fights.Add(new Fight { ID = 3, Boxer1_ID = 1, Boxer2_ID = 2, Winner_ID = 1, DateOfFight = System.DateTime.Today });
-            context.SaveChanges();
+            db.Boxers.Add(new Boxer { ID = 1, Name = "Tyson", Surname = "Fury", DateOfBirth = System.DateTime.Today, Division_ID = 1 });
+            db.Boxers.Add(new Boxer { ID = 2, Name = "Joe", Surname = "Joyce", DateOfBirth = System.DateTime.Today, Division_ID = 1 });
+            db.Fights.Add(new Fight { ID = 3, Boxer1_ID = 1, Boxer2_ID = 2, Winner_ID = 1, DateOfFight = System.DateTime.Today });
+            db.SaveChanges();
         }
 
-        //Use a clean instance of the context to run the test
-        using (var context = new BoxrecContext(options))
+        //Use a clean instance of the db to run the test
+        using (var db = new BoxrecContext(options))
         {
-            var fights = context.Fights.ToList();
+            var fights = db.Fights.ToList();
             Assert.Equal("Tyson Fury", fights[0].Winner);
-            context.Database.EnsureDeleted();
+            db.Database.EnsureDeleted();
         }
     }
 
@@ -95,22 +95,22 @@ public class UnitTest1
             .Options;
 
 
-        // Insert seed data into the database using one instance of the context
-        using (var context = new BoxrecContext(options))
+        // Insert seed data into the database using one instance of the db
+        using (var db = new BoxrecContext(options))
         {
-            context.Fights.Add(new Fight { ID = 1, Boxer1_ID = 1, Boxer2_ID = 2, Winner_ID = 1, DateOfFight = System.DateTime.Today });
-            context.Fights.Add(new Fight { ID = 2, Boxer1_ID = 1, Boxer2_ID = 2, Winner_ID = 1, DateOfFight = System.DateTime.Today });
-            context.Fights.Add(new Fight { ID = 3, Boxer1_ID = 1, Boxer2_ID = 2, Winner_ID = 1, DateOfFight = System.DateTime.Today });
-            context.Fights.Add(new Fight { ID = 4, Boxer1_ID = 1, Boxer2_ID = 3, Winner_ID = 1, DateOfFight = System.DateTime.Today });
-            context.SaveChanges();
+            db.Fights.Add(new Fight { ID = 1, Boxer1_ID = 1, Boxer2_ID = 2, Winner_ID = 1, DateOfFight = System.DateTime.Today });
+            db.Fights.Add(new Fight { ID = 2, Boxer1_ID = 1, Boxer2_ID = 2, Winner_ID = 1, DateOfFight = System.DateTime.Today });
+            db.Fights.Add(new Fight { ID = 3, Boxer1_ID = 1, Boxer2_ID = 2, Winner_ID = 1, DateOfFight = System.DateTime.Today });
+            db.Fights.Add(new Fight { ID = 4, Boxer1_ID = 1, Boxer2_ID = 3, Winner_ID = 1, DateOfFight = System.DateTime.Today });
+            db.SaveChanges();
         }
 
-        //Use a clean instance of the context to run the test
-        using (var context = new BoxrecContext(options))
+        //Use a clean instance of the db to run the test
+        using (var db = new BoxrecContext(options))
         {
-            var fights = context.Fights.Count();
+            var fights = db.Fights.Count();
             Assert.Equal(4, fights);
-            context.Database.EnsureDeleted();
+            db.Database.EnsureDeleted();
         }
     }
 
@@ -123,19 +123,56 @@ public class UnitTest1
             .Options;
 
 
-        // Insert seed data into the database using one instance of the context
+        // Insert seed data into the database using one instance of the db
         using (var db = new BoxrecContext(options))
         {
+            db.Divisions.Add(new Division { ID = 1, Name = "Heavyweight" });
             db.Boxers.Add(new Boxer { ID = 2, Name = "Deontay", Surname = "Wilder", DateOfBirth = System.DateTime.Today, Division_ID = 1 });
             db.SaveChanges();
         }
 
-        //Use a clean instance of the context to run the test
+        //Use a clean instance of the db to run the test
         using (var db = new BoxrecContext(options))
         {
             var boxers = db.Boxers.ToList();
-            Assert.Equal("Lightweight", boxers[0].Division);
+            string division = (from d in db.Divisions where d.ID == boxers[0].Division_ID select d.Name).FirstOrDefault();
+            Assert.Equal(division, "Heavyweight");
             db.Database.EnsureDeleted();
         }
+    }
+
+    [Fact]
+    public void GetBoxerRecord_Test()
+    {
+        var options = new DbContextOptionsBuilder<BoxrecContext>()
+            .UseInMemoryDatabase(databaseName: "boxrec_test_record")
+            .Options;
+
+
+        // Insert seed data into the database using one instance of the db
+        using (var db = new BoxrecContext(options))
+        {
+            db.Boxers.Add(new Boxer { ID = 1, Name = "Tyson", Surname = "Fury", DateOfBirth = System.DateTime.Today, Division_ID = 1 });
+            db.Boxers.Add(new Boxer { ID = 2, Name = "Deontay", Surname = "Wilder", DateOfBirth = System.DateTime.Today, Division_ID = 1 });
+            db.Fights.Add(new Fight { ID = 1, Boxer1_ID = 1, Boxer2_ID = 2, Winner_ID = null, DateOfFight = System.DateTime.Today });
+            db.Fights.Add(new Fight { ID = 2, Boxer1_ID = 1, Boxer2_ID = 2, Winner_ID = 1, DateOfFight = System.DateTime.Today });
+            db.Fights.Add(new Fight { ID = 3, Boxer1_ID = 1, Boxer2_ID = 2, Winner_ID = 1, DateOfFight = System.DateTime.Today });
+
+            db.SaveChanges();
+        }
+
+        //Use a clean instance of the db to run the test
+        using (var db = new BoxrecContext(options))
+        {
+            var boxer = new Boxer { ID = 1, Name = "Tyson", Surname = "Fury", DateOfBirth = System.DateTime.Today, Division_ID = 1 };
+            var fights = (from f in db.Fights where f.Boxer1_ID == boxer.ID || f.Boxer2_ID == boxer.ID select f).ToList();
+            var wins = (from f in db.Fights where f.Winner_ID == boxer.ID select f).ToList();
+            var loses = (from f in db.Fights where (f.Boxer1_ID == boxer.ID || f.Boxer2_ID == boxer.ID) && (f.Winner_ID != boxer.ID && f.Winner_ID != null) select f).ToList();
+            var draws = (from f in db.Fights where (f.Boxer1_ID == boxer.ID || f.Boxer2_ID == boxer.ID) && f.Winner_ID == null select f).ToList();
+            string record = $"{wins.Count()}-{draws.Count}-{loses.Count}";
+            Assert.Equal("2-1-0", record);
+            db.Database.EnsureDeleted();
+        }
+        
     }
 }
