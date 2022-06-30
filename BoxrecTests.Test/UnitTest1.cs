@@ -12,7 +12,7 @@ public class UnitTest1
     public void AddBoxers_Test()
     {
         var options = new DbContextOptionsBuilder<BoxrecContext>()
-            .UseInMemoryDatabase(databaseName: "boxrec")
+            .UseInMemoryDatabase(databaseName: "boxrec_test")
             .Options;
 
 
@@ -40,7 +40,7 @@ public class UnitTest1
     public void AddBoxerWithUrl_Test()
     {
         var options = new DbContextOptionsBuilder<BoxrecContext>()
-            .UseInMemoryDatabase(databaseName: "boxrec")
+            .UseInMemoryDatabase(databaseName: "boxrec_test")
             .Options;
 
 
@@ -65,7 +65,7 @@ public class UnitTest1
     public void GetWinner_Test()
     {
         var options = new DbContextOptionsBuilder<BoxrecContext>()
-            .UseInMemoryDatabase(databaseName: "boxrec")
+            .UseInMemoryDatabase(databaseName: "boxrec_test")
             .Options;
 
 
@@ -91,7 +91,7 @@ public class UnitTest1
     public void AddFights_Test()
     {
         var options = new DbContextOptionsBuilder<BoxrecContext>()
-            .UseInMemoryDatabase(databaseName: "boxrec")
+            .UseInMemoryDatabase(databaseName: "boxrec_test")
             .Options;
 
 
@@ -119,7 +119,7 @@ public class UnitTest1
     public void GetBoxerDivision_Test()
     {
         var options = new DbContextOptionsBuilder<BoxrecContext>()
-            .UseInMemoryDatabase(databaseName: "boxrec_test_record")
+            .UseInMemoryDatabase(databaseName: "boxrec_test")
             .Options;
 
 
@@ -145,7 +145,7 @@ public class UnitTest1
     public void GetBoxerRecord_Test()
     {
         var options = new DbContextOptionsBuilder<BoxrecContext>()
-            .UseInMemoryDatabase(databaseName: "boxrec_test_record")
+            .UseInMemoryDatabase(databaseName: "boxrec_test")
             .Options;
 
 
@@ -180,7 +180,7 @@ public class UnitTest1
     public void GetBoxerFullName_Test()
     {
         var options = new DbContextOptionsBuilder<BoxrecContext>()
-            .UseInMemoryDatabase(databaseName: "boxrec_test_record")
+            .UseInMemoryDatabase(databaseName: "boxrec_test")
             .Options;
 
 
