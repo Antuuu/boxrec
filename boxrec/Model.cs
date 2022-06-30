@@ -30,8 +30,7 @@ namespace boxrec
         /// <summary>
         /// Get MS SQL connection string
         /// </summary>
-        public string ConnectionString { get; }
-
+        public string ConnectionString = @"Data Source=localhost;Initial Catalog=boxrec;Integrated Security=True";
         /// <summary>
         /// Configure <c>BoxrecContext</c> connection string
         /// </summary>
@@ -41,6 +40,10 @@ namespace boxrec
         }
 
         public BoxrecContext(DbContextOptions options) : base(options)
+        {
+        }
+
+        public BoxrecContext()
         {
         }
 

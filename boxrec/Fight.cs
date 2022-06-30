@@ -76,7 +76,7 @@ namespace boxrec
         {
             if (Winner_ID != 0)
             {
-                using (BoxrecContext db = new BoxrecContext(@"Data Source=localhost;Initial Catalog=boxrec;Integrated Security=True"))
+                using (var db = new BoxrecContext())
                 {
                     string? winnerName = (from b in db.Boxers where b.ID == this.Winner_ID select b.Name).FirstOrDefault();
                     string? winnerSurname = (from b in db.Boxers where b.ID == this.Winner_ID select b.Surname).FirstOrDefault();
@@ -88,7 +88,7 @@ namespace boxrec
 
         private string GetBoxerFullName(int id)
         {
-            using (BoxrecContext db = new BoxrecContext(@"Data Source=localhost;Initial Catalog=boxrec;Integrated Security=True"))
+            using (var db = new BoxrecContext())
             {
                 string? boxerName = (from b in db.Boxers where b.ID == id select b.Name).FirstOrDefault();
                 string? boxerSurname = (from b in db.Boxers where b.ID == id select b.Surname).FirstOrDefault();
