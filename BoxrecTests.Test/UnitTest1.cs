@@ -126,7 +126,6 @@ public class UnitTest1
         // Insert seed data into the database using one instance of the context
         using (var db = new BoxrecContext(options))
         {
-            db.Divisions.Add(new Division { ID = 1, Name = "Heavyweight" });
             db.Boxers.Add(new Boxer { ID = 2, Name = "Deontay", Surname = "Wilder", DateOfBirth = System.DateTime.Today, Division_ID = 1 });
             db.SaveChanges();
         }
