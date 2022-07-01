@@ -229,7 +229,7 @@ namespace boxrec
             FightsEditorWindow fightsEditor = new FightsEditorWindow();
 
             fightsEditor.ShowDialog();
-
+            dgridBoxers.ItemsSource = FetchBoxers();
         }
 
     }
