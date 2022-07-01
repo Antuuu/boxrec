@@ -18,15 +18,6 @@ using System.Windows.Shapes;
 
 namespace boxrec
 {
-    //TO DO list
-    //Db:
-
-    //2.) uzupełnienie bazy
-
-
-    //5.) Unit tests
-
-
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
