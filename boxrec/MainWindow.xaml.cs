@@ -63,7 +63,7 @@ namespace boxrec
                 fights = (from f in db.Fights where f.Boxer1_ID == boxer.ID || f.Boxer2_ID == boxer.ID select f).ToList();
                 var wins = (from f in db.Fights where f.Winner_ID == boxer.ID select f).ToList();
                 var losses = (from f in db.Fights where (f.Boxer1_ID == boxer.ID || f.Boxer2_ID == boxer.ID) && (f.Winner_ID != boxer.ID && f.Winner_ID != null) select f).ToList();
-                var draws = (from f in db.Fights where (f.Boxer1_ID == boxer.ID || f.Boxer2_ID == boxer.ID) && f.Winner_ID == null select f).ToList();
+                var draws = (from f in db.Fights where (f.Boxer1_ID == boxer.ID || f.Boxer2_ID == boxer.ID) && f.Winner_ID == 0 select f).ToList();
                 foreach (Fight fight in wins)
                 {
                     fight.FightResult = "Win";

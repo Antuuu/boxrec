@@ -100,10 +100,10 @@ namespace boxrec
                 var fights = (from f in db.Fights where f.Boxer1_ID == this.ID || f.Boxer2_ID == this.ID select f).ToList();
                 var wins = (from f in db.Fights where f.Winner_ID == this.ID select f).ToList();
                 var loses = (from f in db.Fights where (f.Boxer1_ID == this.ID || f.Boxer2_ID == this.ID) && (f.Winner_ID != this.ID && f.Winner_ID != null) select f).ToList();
-                var draws = (from f in db.Fights where (f.Boxer1_ID == this.ID || f.Boxer2_ID == this.ID) && f.Winner_ID == null select f).ToList();
+                var draws = (from f in db.Fights where (f.Boxer1_ID == this.ID || f.Boxer2_ID == this.ID) && f.Winner_ID == 0 select f).ToList();
                 w = wins.Count;
                 l = loses.Count;
-                d = loses.Count;
+                d = draws.Count;
             }
             string record = $"{w}-{d}-{l}";
             return record;
